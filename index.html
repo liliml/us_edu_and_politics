@@ -1,3 +1,38 @@
-<!-- This is the first page users will see when they open the the webpage, all
-other links people click on that go to differnet pages or views should be a new htmls files
-created in the html folder -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Interactive Web Mapping of Graduation Rates in the US from 2010-2023</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+</head> 
+
+<body>
+    <div id="map"></div>
+    <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'Less9Gra')">Elementary</button>
+        <button class="tablinks" onclick="openCity(event, '9-12NoDip')">Middle School</button>
+        <button class="tablinks active" onclick="openCity(event, 'HighGrad')">High School</button>
+        <button class="tablinks" onclick="openCity(event, 'Col_NoDeg')">College No Degree</button>
+        <button class="tablinks" onclick="openCity(event, 'AssocDeg')">Associate Degree</button>
+        <button class="tablinks" onclick="openCity(event, 'BachDeg')">Bachelor's Degree</button>
+    </div>      
+    <div class='map-overlay' id='features'>
+        <h2>US Highest Level of Education</h2>
+        <div id='text-description'>
+            <p>Hover over a state!</p>
+        </div>
+    </div>
+    <div class='map-overlay' id='legend'></div> 
+    <div class="slidecontainer">
+        <p>Selected Year: <span id="selectedYear">2010</span></p>
+        <input type="range" min="2010" max="2023" value="2010" class="slider" id="dataRange">
+    </div>
+    <script src="js/index.js"></script>
+
+</body>
+
+</html>
