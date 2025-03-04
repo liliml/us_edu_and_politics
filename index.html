@@ -1,243 +1,187 @@
-<!DOCTYPE html>
-<html>
+<!-- This is the first page users will see when they open the the webpage, all
+other links people click on that go to differnet pages or views should be a new htmls files
+created in the html folder -->
 
-<head>
-    <meta charset="utf-8">
-    <title>Interactive Web Mapping oF Washington Covid Cases</title>
-    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.css" rel="stylesheet">
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.js"></script>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Educational Attainment in US (2010-2023)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
+    <link
+      href="https://api.tiles.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
     <style>
-        h2, h3 {
-            margin: 10px;
-            font-size: 18px;
-        }
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      }
 
-        h3 {
-            font-size: 16px;
-        }
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+      }
 
-        p {
-            margin: 10px;
-        }
-        #map {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            width: 100%;
-        }
-        .map-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            background: rgba(255, 255, 255, 0.8);
-            border-style: solid;
-            border-width: 1px;
-            border-color: rgba(0, 0, 0, 0.2);
-            margin-left: 20px;
-            font-family: Arial, sans-serif;
-            overflow: auto;
-            border-radius: 3px;
-        }
+      #console {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 260px;
+        background-color: white;
+        padding: 15px;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+      }
 
-        #features {
-            top: 0;
-            height: 140px;
-            margin-top: 20px;
-            width: 250px;
-        }
+      h1 {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
 
-        #legend {
-            padding: 10px;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-            line-height: 18px;
-            height: 210px;
-            margin-bottom: 130px;
-            width: 150px;
-        }
+      h2 {
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
 
-        .legend-key {
-            display: inline-block;
-            border-radius: 20%;
-            width: 10px;
-            height: 10px;
-            margin-right: 5px;
-        }
+      a {
+        text-decoration: none;
+        color: #2dc4b2;
+      }
 
-        .mapboxgl-canvas-container.mapboxgl-interactive,
-        .mapboxgl-ctrl-group button.mapboxgl-ctrl-compass {
-            cursor: unset;
-        }
+      .session {
+        margin-bottom: 15px;
+      }
 
-        .slidecontainer {
-            width: 100%; /* Width of the outside container */
-        }
+      .row {
+        height: 12px;
+        width: 100%;
+      }
 
-        /* The slider itself */
-        .slider {
-            -webkit-appearance: none;  /* Override default CSS styles */
-            appearance: none;
-            width: 90%; /* Full-width */
-            height: 30px; /* Specified height */
-            background: #d3d3d3; /* Grey background */
-            outline: none; /* Remove outline */
-            opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-            -webkit-transition: .2s; /* 0.2 seconds transition on hover */
-            transition: opacity .2s;
-            position: absolute;
-            bottom: 40px;
-            left: 0;
-            right: 0;
-            margin: auto;
-        }
-
-        /* Mouse-over effects */
-        .slider:hover {
-            opacity: 1; /* Fully shown on mouse-over */
-        }
-
-        /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
-        .slider::-webkit-slider-thumb {
-            -webkit-appearance: none; /* Override default look */
-            appearance: none;
-            width: 25px; /* Set a specific slider handle width */
-            height: 25px; /* Slider handle height */
-            background: #04AA6D; /* Green background */
-            cursor: pointer; /* Cursor on hover */
-        }
-
-        .slider::-moz-range-thumb {
-            width: 25px; /* Set a specific slider handle width */
-            height: 25px; /* Slider handle height */
-            background: #04AA6D; /* Green background */
-            cursor: pointer; /* Cursor on hover */
-        }
-    </style>
-</head> 
-
-<body>
-    <div id="map"></div>
-    <div class='map-overlay' id='features'>
-        <h2>Washington Covid Cases Per County</h2>
-        <div id='text-description'>
-            <p>Hover over a state!</p>
-        </div>
-    </div>
-    <div class='map-overlay' id='legend'></div>
-    <div class="slidecontainer">
-        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-    </div>
-    <script>
-        mapboxgl.accessToken = 'pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw';
-
-        const map = new mapboxgl.Map({
-                container: 'map', // container ID
-                style: 'mapbox://styles/mapbox/light-v10', // style URL
-                zoom: 3.8, // starting zoom
-                center: [-99.92677322202407, 39.51185858540333] // starting center
-            }
+      .colors {
+        background: linear-gradient(
+          to right,
+          #2dc4b2,
+          #3bb3c3,
+          #669ec4,
+          #8b88b6,
+          #a2719b,
+          #aa5e79
         );
+        margin-bottom: 5px;
+      }
 
-        var slider = document.getElementById("myRange");
-        var output = document.getElementById("demo");
-        output.innerHTML = slider.value; // Display the default slider value
+      .label {
+        width: 20%;
+        display: inline-block;
+        text-align: center;
+      }
+    </style>
+  </head>
 
-        // Update the current slider value (each time you drag the slider handle)
-        slider.oninput = function() {
-            output.innerHTML = this.value;  
-        }
+  <body>
+    <div id="map"></div>
+    <div id="console">
+      <h1>Educational Attainment in US</h1>
+      <p>
+        Data source:
+        <a href="https://data.census.gov/table?q=educational%20attainment%20by%20state">
+          US Census Data on Educational Attainment
+        </a>
+      </p>
 
-        async function geojsonFetch() { 
-            let response = await fetch('assets/2010_data.geojson');
-            let stateData = await response.json();
+      <div class="session">
+        <h2>Year: <label id="yearLabel">2010</label></h2>
+        <input
+          id="yearSlider"
+          type="range"
+          min="2010"
+          max="2023"
+          step="1"
+          value="2010"
+          style="width: 100%"
+        />
+      </div>
 
-            map.on('load', function loadingData() {
-                map.addSource('stateData', {
+      <div class="session">
+        <h2>Bachelor’s Degree Rate</h2>
+        <div class="row colors"></div>
+        <div class="row labels">
+          <div class="label">0%</div>
+          <div class="label">25%</div>
+          <div class="label">50%</div>
+          <div class="label">75%</div>
+          <div class="label">100%</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+    <script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoibHlubmllMDMzMCIsImEiOiJjbTdzajl2MWExYzJmMnBvYXNpYndjamlxIn0.YiU2nPVukAuXf19cZTcfSw';
+
+    const years = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2021, 2022, 2023];
+    let currentYear = 2010;  // AI
+
+    const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/light-v11',
+        center: [-98.5795, 39.8283],
+        zoom: 12
+    });
+
+        map.on('load', () => {
+            years.forEach(year => {  // AI
+                map.addSource(`educationData_${year}`, {
                     type: 'geojson',
-                    data: stateData
+                    data: `assets/2010_data.geojson`
                 });
 
                 map.addLayer({
-                    'id': 'stateData-layer',
-                    'type': 'fill',
-                    'source': 'stateData',
-                    'paint': {
-                        'fill-color': [
-                            'step',
-                            ['get', 'casePer10k'],
-                            '#ffffd4',   // stop_output_0
-                            456,          // stop_input_0
-                            '#fee391',   // stop_output_1
-                            710,          // stop_input_1
-                            '#fec44f',   // stop_output_2
-                            878,          // stop_input_2 
-                            '#fe9929',   // stop_output_3
-                            1090,         // stop_input_3
-                            '#ec7014',   // stop_output_4
-                            1222,         // stop_input_4
-                            '#cc4c02',   // stop_output_5
-                            1540,         // stop_input_5
-                            '#8c2d04'   // stop_output_6
+                    id: `educationLayer_${year}`,
+                    type: 'circle',
+                    source: `educationData_${year}`,
+                    paint: {
+                        'circle-radius': [
+                            'interpolate',
+                            ['linear'],
+                            ['number', ['get', 'bachelor_degree_rate']],
+                            0, 4,
+                            25, 8,
+                            50, 12,
+                            75, 16,
+                            100, 24
                         ],
-                        'fill-outline-color': '#BBBBBB',
-                        'fill-opacity': 0.7,
+                        'circle-color': [
+                            'interpolate',
+                            ['linear'],
+                            ['number', ['get', 'bachelor_degree_rate']],
+                            0, '#2DC4B2',
+                            25, '#3BB3C3',
+                            50, '#669EC4',
+                            75, '#8B88B6',
+                            100, '#AA5E79'
+                        ],
+                        'circle-opacity': 0.8
+                    },
+                    'layout': {
+                        'visibility': year === currentYear ? 'visible' : 'none'
                     }
                 });
             });
+        });
 
-            const layers = [
-                '0-455',
-                '456-709',
-                '710-877',
-                '878-1089',
-                '1090-1221',
-                '1222-1539',
-                '1540 and more'
-            ];
-            const colors = [
-                '#ffffd4',
-                '#fee391',
-                '#fec44f',
-                '#fe9929',
-                '#ec7014',
-                '#cc4c02',
-                '#8c2d04'
-            ];
+        // 
+        document.getElementById('yearSlider').addEventListener('input', (event) => {
+            const year = parseInt(event.target.value);
+            document.getElementById('yearLabel').textContent = year;
 
-            const legend = document.getElementById('legend');
-            legend.innerHTML = "<b>Covid Cases<br>(Covid Cases Per 10k)</b><br><br>";
-
-            layers.forEach((layer, i) => {
-                const color = colors[i];
-                const item = document.createElement('div');
-                const key = document.createElement('span');
-                key.className = 'legend-key';
-                key.style.backgroundColor = color;
-
-                const value = document.createElement('span');
-                value.innerHTML = `${layer}`;
-                item.appendChild(key);
-                item.appendChild(value);
-                legend.appendChild(item);
+            years.forEach(y => {
+                map.setLayoutProperty(`educationLayer_${y}`, 'visibility', y === year ? 'visible' : 'none');
             });
-
-            map.on('mousemove', ({point}) => {
-                const state = map.queryRenderedFeatures(point, {
-                    layers: ['stateData-layer']
-                });
-                document.getElementById('text-description').innerHTML = state.length ?
-                    `<h3>${state[0].properties.name}</h3><p><strong><em>${state[0].properties.casePer10k}</strong> Covid Cases per 10k People</em></p>` :
-                    `<p>Hover over a state!</p>`;
-            });
-        }
-
-        
-
-        geojsonFetch();
-    </script>
-
-</body>
-
-</html>
+        });
