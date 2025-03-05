@@ -98,7 +98,7 @@ async function geojsonFetch() {
             `<h3>${state[0].properties.name}</h3>
             <p><strong><em>${state[0].properties.Est25Over}</strong> estimated people 25 and over</em></p>
             <p><strong><em>${state[0].properties.Less9Gra}</strong> percent estimated of people 25 and over who have less then 9th grade education</em></p>
-            <p><strong><em>${state[0].properties[7]}</strong> percent estimated of people 25 and over who have high school education but no diploma</em></p>
+            <p><strong><em>${state[0].properties[[[7]]]}</strong> percent estimated of people 25 and over who have high school education but no diploma</em></p>
             <p><strong><em>${state[0].properties.HighGrad}</strong> percent estimated of people 25 and over who only have high school diplomas</em></p>
             <p><strong><em>${state[0].properties.Col_NoDeg}</strong> percent estimated of people 25 and over who went to college but have no degree</em></p>
             <p><strong><em>${state[0].properties.AssocDeg}</strong> percent estimated of people 25 and over who only have an associates degree</em></p>
@@ -110,10 +110,10 @@ async function geojsonFetch() {
             // "Less9Gra" 
             // "9-12NoDip" (has properties index of 7 due to zero based indexing, doing this due to using - in the name, which is a special character!!!!)
             //"HighGrad", 
-            // "Col_NoDeg" (has properties index of 9 due to zero based indexing, doing this due to using _ in the name, which is a special character!!!!) 
+            // "Col_NoDeg"
             // "AssocDeg"
             // "BachDeg" 
-            //"Grad_Prof" (has properties index of 12 due to zero based indexing, doing this due to using _ in the name, which is a special character!!!!) 
+            //"Grad_Prof" 
             
             `<p>Hover over a state!</p>`;
     });
