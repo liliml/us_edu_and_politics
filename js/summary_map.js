@@ -1,5 +1,10 @@
 mapboxgl.accessToken = 'pk.eyJ1Ijoicm9zZS0xNjgiLCJhIjoiY202aWYxY3lsMDdxdjJpcHJoaHlmZzdiNiJ9.3wUanYJCI6409InuRs9e7A';
 
+//lynnie
+const years = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2021, 2022, 2023];
+let currentYear = 2010;  // AI
+//
+
 const map = new mapboxgl.Map({
         container: 'map', // container ID
         style: 'mapbox://styles/mapbox/light-v10', // style URL
@@ -117,6 +122,17 @@ async function geojsonFetch() {
             
             `<p>Hover over a state!</p>`;
     });
+
+    //lynnie
+    document.getElementById('yearSlider').addEventListener('input', (event) => {
+        const year = parseInt(event.target.value);
+        document.getElementById('yearLabel').textContent = year;
+
+        years.forEach(y => {
+            map.setLayoutProperty(`educationLayer_${y}`, 'visibility', y === year ? 'visible' : 'none');
+        });
+    });
+    //
 }
 
 geojsonFetch();
