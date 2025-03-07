@@ -169,37 +169,122 @@ async function geojsonFetch(year) {
         blocks[4], legendcolors[4]
     ]);
 
-    map.on('mousemove', ({point}) => {
-        const state = map.queryRenderedFeatures(point, {
-            layers: ['stateData-layer']
+    let test = "9_12NoDip" //testing this to see if replacing .columnname with this works, tested and it does not?
+    // let BachDeg = " percent estimated of people 25 and over who have a bachlor's degree"
+    // let Grad_Prof = " percent estimated of people 25 and over who have professional or graduate degrees"
+    if (selectedColumn == "Less9Gra") {        
+        map.on('mousemove', ({point}) => {
+            const state = map.queryRenderedFeatures(point, {
+                layers: ['stateData-layer']
+            });
+            document.getElementById('text-description').innerHTML = state.length ?
+                `<h3>${state[0].properties.name}</h3>
+                <p><strong><em>${state[0].properties.Est25Over}</strong> estimated people 25 and over</em></p>
+                <p><strong><em>${state[0].properties.Less9Gra}</strong>% estimated of people 25 and over who have less then 9th grade education</em></p>
+                ` :
+                `<p>Hover over a state!</p>`;
         });
-        document.getElementById('text-description').innerHTML = state.length ?
-            `<h3>${state[0].properties.name}</h3>
-            <p><strong><em>${state[0].properties[selectedColumn]}%</strong> Population Over 25</em></p>
-
-            <p><strong><em>${state[0].properties.Est25Over}</strong> estimated people 25 and over</em></p>
-            <p><strong><em>${state[0].properties.Less9Gra}</strong> percent estimated of people 25 and over who have less then 9th grade education</em></p>
-            <p><strong><em>${state[0].properties[[[7]]]}</strong> percent estimated of people 25 and over who have high school education but no diploma</em></p>
-            <p><strong><em>${state[0].properties.HighGrad}</strong> percent estimated of people 25 and over who only have high school diplomas</em></p>
-            <p><strong><em>${state[0].properties.Col_NoDeg}</strong> percent estimated of people 25 and over who went to college but have no degree</em></p>
-            <p><strong><em>${state[0].properties.AssocDeg}</strong> percent estimated of people 25 and over who only have an associates degree</em></p>
-            <p><strong><em>${state[0].properties.BachDeg}</strong> percent estimated of people 25 and over who have a bachlor's degree</em></p>
-            <p><strong><em>${state[0].properties.Grad_Prof}</strong> percent estimated of people 25 and over who have professional or graduate degrees</em></p>
-            ` :
-            
-            // "name" (index of 1)
-            // "Est25Over"
-            // "Less9Gra" 
-            // "9-12NoDip" (has properties index of 7 due to zero based indexing, doing this due to using - in the name, which is a special character!!!!)
-            //"HighGrad", 
-            // "Col_NoDeg"
-            // "AssocDeg"
-            // "BachDeg" 
-            //"Grad_Prof"
-            
-
-            `<p>Hover over a state!</p>`;
-    });
+    } else if (selectedColumn == "9_12NoDip") {
+        map.on('mousemove', ({point}) => {
+            const state = map.queryRenderedFeatures(point, {
+                layers: ['stateData-layer']
+            });
+            document.getElementById('text-description').innerHTML = state.length ?
+                `<h3>${state[0].properties.name}</h3>
+                <p><strong><em>${state[0].properties.Est25Over}</strong> estimated people 25 and over</em></p>
+                <p><strong><em>${state[0].properties[[[7]]]}</strong>% estimated of people 25 and over who have high school education but no diploma</em></p>
+                ` :
+                `<p>Hover over a state!</p>`;
+        });    
+    } else if (selectedColumn == "HighGrad") {
+        map.on('mousemove', ({point}) => {
+            const state = map.queryRenderedFeatures(point, {
+                layers: ['stateData-layer']
+            });
+            document.getElementById('text-description').innerHTML = state.length ?
+                `<h3>${state[0].properties.name}</h3>
+                <p><strong><em>${state[0].properties.Est25Over}</strong> estimated people 25 and over</em></p>
+                <p><strong><em>${state[0].properties.HighGrad}</strong>% estimated of people 25 and over who only have high school diplomas</em></p>
+                ` :
+                `<p>Hover over a state!</p>`;
+        });
+    } else if (selectedColumn == "Col_NoDeg") {
+        map.on('mousemove', ({point}) => {
+            const state = map.queryRenderedFeatures(point, {
+                layers: ['stateData-layer']
+            });
+            document.getElementById('text-description').innerHTML = state.length ?
+                `<h3>${state[0].properties.name}</h3>
+                <p><strong><em>${state[0].properties.Est25Over}</strong> estimated people 25 and over</em></p>
+                <p><strong><em>${state[0].properties.Col_NoDeg}</strong>% estimated of people 25 and over who went to college but have no degree</em></p>
+                ` :
+                `<p>Hover over a state!</p>`;
+        });    
+    } else if (selectedColumn == "AssocDeg") {
+        map.on('mousemove', ({point}) => {
+            const state = map.queryRenderedFeatures(point, {
+                layers: ['stateData-layer']
+            });
+            document.getElementById('text-description').innerHTML = state.length ?
+                `<h3>${state[0].properties.name}</h3>
+                <p><strong><em>${state[0].properties.Est25Over}</strong> estimated people 25 and over</em></p>
+                <p><strong><em>${state[0].properties.AssocDeg}</strong>% estimated of people 25 and over who only have an associates degree</em></p>
+                ` :
+                `<p>Hover over a state!</p>`;
+        });       
+    } else if (selectedColumn == "BachDeg") {
+        map.on('mousemove', ({point}) => {
+            const state = map.queryRenderedFeatures(point, {
+                layers: ['stateData-layer']
+            });
+            document.getElementById('text-description').innerHTML = state.length ?
+                `<h3>${state[0].properties.name}</h3>
+                <p><strong><em>${state[0].properties.Est25Over}</strong> estimated people 25 and over</em></p>
+                <p><strong><em>${state[0].properties.BachDeg}</strong>% estimated of people 25 and over who have a bachlor's degree</em></p>
+                ` :
+                `<p>Hover over a state!</p>`;
+        });    
+    } else if (selectedColumn == "Grad_Prof") {
+        map.on('mousemove', ({point}) => {
+            const state = map.queryRenderedFeatures(point, {
+                layers: ['stateData-layer']
+            });
+            document.getElementById('text-description').innerHTML = state.length ?
+                `<h3>${state[0].properties.name}</h3>
+                <p><strong><em>${state[0].properties.Est25Over}</strong> estimated people 25 and over</em></p>
+                <p><strong><em>${state[0].properties.Grad_Prof}</strong>% estimated of people 25 and over who have professional or graduate degrees</em></p>
+                ` :
+                `<p>Hover over a state!</p>`;
+        });
+    } else {
+        // this branch is for the "Summary" tab
+        map.on('mousemove', ({point}) => {
+            const state = map.queryRenderedFeatures(point, {
+                layers: ['stateData-layer']
+            });
+            document.getElementById('text-description').innerHTML = state.length ?
+                `<h3>${state[0].properties.name}</h3>
+                <p><strong><em>${state[0].properties.Est25Over}</strong> estimated people 25 and over</em></p>
+                <p><strong><em>${state[0].properties.Less9Gra}</strong>% estimated of people 25 and over who have less then 9th grade education</em></p>
+                <p><strong><em>${state[0].properties[[[7]]]}</strong>% estimated of people 25 and over who have high school education but no diploma</em></p>
+                <p><strong><em>${state[0].properties.HighGrad}</strong>% estimated of people 25 and over who only have high school diplomas</em></p>
+                <p><strong><em>${state[0].properties.Col_NoDeg}</strong>% estimated of people 25 and over who went to college but have no degree</em></p>
+                <p><strong><em>${state[0].properties.AssocDeg}</strong>% estimated of people 25 and over who only have an associates degree</em></p>
+                <p><strong><em>${state[0].properties.BachDeg}</strong>% estimated of people 25 and over who have a bachlor's degree</em></p>
+                <p><strong><em>${state[0].properties.Grad_Prof}</strong>% estimated of people 25 and over who have professional or graduate degrees</em></p>
+                ` :
+                // "name" (index of 1)
+                // "Est25Over"
+                // "Less9Gra" 
+                // "9-12NoDip" (has properties index of 7 due to zero based indexing, doing this due to using - in the name, which is a special character!!!!)
+                //"HighGrad", 
+                // "Col_NoDeg"
+                // "AssocDeg"
+                // "BachDeg" 
+                //"Grad_Prof"
+                `<p>Hover over a state!</p>`;
+        });
+    }
 }
 
 
