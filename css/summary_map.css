@@ -25,8 +25,9 @@ p {
 /* map overlay for top map overlay below */
 .map-overlay-top {
     position: absolute;
-    bottom: 0;
-    left: 0;
+    /* bottom: 0; */
+    right: 5px;
+    /* top: 100px; */
     background: rgba(255, 255, 255, 0.8);
     border-style: solid;
     border-width: 1px;
@@ -88,7 +89,7 @@ p {
 
 #console {
 position: absolute;
-    top: 10px;
+    top: 60px;
     left: 10px;
     width: 260px;
     background-color: white;
@@ -239,3 +240,19 @@ position: absolute;
     border-radius: 4px;
     cursor: pointer;
 }
+
+/* .row {
+    height: 12px;
+    width: 100%;
+  }
+
+.colors {
+    background: linear-gradient(
+      to right,
+      #2dc4b2,
+      #3bb3c3,
+      #669ec4,
+      #8b88b6,
+      #a2719b,
+      #aa5e79
+    ); */

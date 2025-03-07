@@ -19,8 +19,8 @@ const map = new mapboxgl.Map({
 );
 
 
-var slider = document.getElementById("dataRange");
-var selectedYear = document.getElementById("selectedYear");
+var slider = document.getElementById("yearSlider");
+var selectedYear = document.getElementById("yearLabel");
 var selectedColumn = 'HighGrad'; // Default column
 
 // Update the map data based on the slider value
@@ -28,6 +28,7 @@ slider.oninput = function() {
     selectedYear.innerHTML = this.value;
     geojsonFetch(this.value);
 }
+
 
 function openCity(evt, columnName) {
     selectedColumn = columnName;
@@ -48,6 +49,42 @@ async function geojsonFetch(year) {
     let response = await fetch(`assets/${year}_data.geojson`);
     let stateData = await response.json();
 
+    const blocks = [
+        11,
+        21,
+        31,
+        41,
+        51
+    ];
+
+    var legendcolors = [
+        '#f1eef6',
+        '#bdc9e1',
+        '#74a9cf',
+        '#2b8cbe',
+        '#045a8d'
+    ];
+
+    //Still not working changing colors
+    // if (stateData.features[0].properties.color === 'Blue') {
+        
+    //     colors.push(
+    //         '#f1eef6',
+    //         '#bdc9e1',
+    //         '#74a9cf',
+    //         '#2b8cbe',
+    //         '#045a8d'
+    //     );
+    // } else if (stateData.features[0].properties.color === 'Red') {
+    //     colors.push(
+    //         '#fee5d9',
+    //         '#fcae91',
+    //         '#fb6a4a',
+    //         '#de2d26',
+    //         '#a50f15'
+    //     );
+    // }
+
     if (map.getSource('stateData')) {
         map.getSource('stateData').setData(stateData);
     } else {
@@ -63,19 +100,14 @@ async function geojsonFetch(year) {
                 'source': 'stateData',
                 'paint': {
                     'fill-color': [
-                        'step',
+                        'interpolate',
+                        ['linear'],
                         ['get', selectedColumn],
-                        '#ffffd4',   // stop_output_0
-                        20,          // stop_input_0
-                        '#fee391',   // stop_output_1
-                        22,          // stop_input_1
-                        '#fec44f',   // stop_output_2
-                        24,          // stop_input_2 
-                        '#fe9929',   // stop_output_3
-                        26,         // stop_input_3
-                        '#ec7014',   // stop_output_4
-                        28,         // stop_input_4
-                        '#cc4c02'
+                        blocks[0], legendcolors[0],
+                        blocks[1], legendcolors[1],
+                        blocks[2], legendcolors[2],
+                        blocks[3], legendcolors[3],
+                        blocks[4], legendcolors[4]
                     ],
                     'fill-outline-color': '#BBBBBB',
                     'fill-opacity': 0.7,
@@ -95,6 +127,7 @@ async function geojsonFetch(year) {
         '500-999',
         '1000 and more'
     ];
+
     const colors = [
         '#FFEDA070',
         '#FED97670',
@@ -105,6 +138,8 @@ async function geojsonFetch(year) {
         '#BD002670',
         '#80002670'
     ];
+    
+
 
     const legend = document.getElementById('legend');
     legend.innerHTML = "<b>Population Density<br>(people/sq.mi.)</b><br><br>";  
@@ -127,17 +162,11 @@ async function geojsonFetch(year) {
     map.setPaintProperty('stateData-layer', 'fill-color', [
         'step',
         ['get', selectedColumn],
-        '#ffffd4',   // stop_output_0
-        20,          // stop_input_0
-        '#fee391',   // stop_output_1
-        22,          // stop_input_1
-        '#fec44f',   // stop_output_2
-        24,          // stop_input_2 
-        '#fe9929',   // stop_output_3
-        26,         // stop_input_3
-        '#ec7014',   // stop_output_4
-        28,         // stop_input_4
-        '#cc4c02'
+        blocks[0], legendcolors[0],
+        blocks[1], legendcolors[1],
+        blocks[2], legendcolors[2],
+        blocks[3], legendcolors[3],
+        blocks[4], legendcolors[4]
     ]);
 
     map.on('mousemove', ({point}) => {
@@ -172,6 +201,7 @@ async function geojsonFetch(year) {
             `<p>Hover over a state!</p>`;
     });
 }
+
 
 // Initial load
 geojsonFetch(slider.value);
