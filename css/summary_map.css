@@ -196,13 +196,6 @@ position: absolute;
 /*  */
 
 
-.session {
-    /* z-index: -1; */
-    /* opacity: 50%; */
-    /* background: none; */
-}
-
-
 /* css that makes cursor look normal */
 .mapboxgl-canvas-container.mapboxgl-interactive,
 .mapboxgl-ctrl-group button.mapboxgl-ctrl-compass {
