@@ -1,0 +1,258 @@
+h2, h3 {
+    margin: 10px;
+    font-size: 18px;
+}
+
+h3 {
+    font-size: 16px;
+}
+
+p {
+    margin: 10px;
+}
+
+/* map styling */
+#map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+
+
+/* map overlay for top map overlay below */
+.map-overlay-top {
+    position: absolute;
+    /* bottom: 0; */
+    right: 5px;
+    /* top: 100px; */
+    background: rgba(255, 255, 255, 0.8);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0.2);
+    margin-left: 20px;
+    font-family: Arial, sans-serif;
+    /* overflow: auto; */
+    border-radius: 3px;
+    /* padding-bottom: auto; */
+    /* height: auto; */
+}
+
+/* map overlay elements below */
+.map-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.8);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0.2);
+    margin-left: 20px;
+    font-family: Arial, sans-serif;
+    overflow: auto;
+    border-radius: 3px;
+}
+
+#features {
+    top: 0;
+    /* height: 100px; */
+    height:fit-content;
+    margin-top: 20px;
+    width: 250px;
+}
+
+#legend {
+    padding: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    line-height: 18px;
+    height: 270px;
+    margin-bottom: 40px;
+    width: 180px;
+}
+
+.legend-key {
+    display: inline-block;
+    border-radius: 20%;
+    width: 10px;
+    height: 10px;
+    margin-right: 5px;
+}
+
+/* lynnie */
+.label {
+    width: 20%;
+    display: inline-block;
+    text-align: center;
+  }
+
+#console {
+position: absolute;
+    top: 60px;
+    left: 10px;
+    width: 260px;
+    background-color: white;
+    padding: 15px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+/*  */
+
+/* Garett slider and tabs */
+.slidecontainer {
+    width: 100%; /* Width of the outside container */
+    text-align: center; /* Center the text */
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.slidecontainer p {
+    margin: 0; /* Remove margin */
+    padding-bottom: 30px; /* Add padding to separate from slider */
+    position: absolute;
+    bottom: 50px; /* Position above the slider */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* The slider itself */
+.slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 90%; /* Full-width */
+    height: 30px; /* Specified height */
+    background: #000000; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #04AA6D; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #04AA6D; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+}
+
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    position: absolute;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+/*  */
+
+
+/* css that makes cursor look normal */
+.mapboxgl-canvas-container.mapboxgl-interactive,
+.mapboxgl-ctrl-group button.mapboxgl-ctrl-compass {
+    cursor: unset;
+}
+
+/* Welcome panel styling */
+#welcome-panel {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+    text-align: left;
+    width: 400px;
+}
+
+#welcome-panel h2 {
+    text-align: center;
+    font-size: 22px;
+}
+
+#welcome-panel p {
+    font-size: 17px;
+}
+
+#welcome-panel button {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 15px;
+    padding: 8px 15px;
+    border: none;
+    background: #0078a8;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* .row {
+    height: 12px;
+    width: 100%;
+  }
+
+.colors {
+    background: linear-gradient(
+      to right,
+      #2dc4b2,
+      #3bb3c3,
+      #669ec4,
+      #8b88b6,
+      #a2719b,
+      #aa5e79
+    ); */

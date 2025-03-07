@@ -1,38 +1,187 @@
-<!DOCTYPE html>
-<html>
+<!-- This is the first page users will see when they open the the webpage, all
+other links people click on that go to differnet pages or views should be a new htmls files
+created in the html folder -->
 
-<head>
-    <meta charset="utf-8">
-    <title>Interactive Web Mapping of Graduation Rates in the US from 2010-2023</title>
-    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.css" rel="stylesheet">
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.js"></script>
-    <link rel="stylesheet" href="css/index.css">
-</head> 
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Educational Attainment in US (2010-2023)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
+    <link
+      href="https://api.tiles.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      }
 
-<body>
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+      }
+
+      #console {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 260px;
+        background-color: white;
+        padding: 15px;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+      }
+
+      h1 {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+
+      h2 {
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+
+      a {
+        text-decoration: none;
+        color: #2dc4b2;
+      }
+
+      .session {
+        margin-bottom: 15px;
+      }
+
+      .row {
+        height: 12px;
+        width: 100%;
+      }
+
+      .colors {
+        background: linear-gradient(
+          to right,
+          #2dc4b2,
+          #3bb3c3,
+          #669ec4,
+          #8b88b6,
+          #a2719b,
+          #aa5e79
+        );
+        margin-bottom: 5px;
+      }
+
+      .label {
+        width: 20%;
+        display: inline-block;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
     <div id="map"></div>
-    <div class="tab">
-        <button class="tablinks" onclick="openCity(event, 'Less9Gra')">Elementary</button>
-        <button class="tablinks" onclick="openCity(event, '9-12NoDip')">Middle School</button>
-        <button class="tablinks active" onclick="openCity(event, 'HighGrad')">High School</button>
-        <button class="tablinks" onclick="openCity(event, 'Col_NoDeg')">College No Degree</button>
-        <button class="tablinks" onclick="openCity(event, 'AssocDeg')">Associate Degree</button>
-        <button class="tablinks" onclick="openCity(event, 'BachDeg')">Bachelor's Degree</button>
-    </div>      
-    <div class='map-overlay' id='features'>
-        <h2>US Highest Level of Education</h2>
-        <div id='text-description'>
-            <p>Hover over a state!</p>
+    <div id="console">
+      <h1>Educational Attainment in US</h1>
+      <p>
+        Data source:
+        <a href="https://data.census.gov/table?q=educational%20attainment%20by%20state">
+          US Census Data on Educational Attainment
+        </a>
+      </p>
+
+      <div class="session">
+        <h2>Year: <label id="yearLabel">2010</label></h2>
+        <input
+          id="yearSlider"
+          type="range"
+          min="2010"
+          max="2023"
+          step="1"
+          value="2010"
+          style="width: 100%"
+        />
+      </div>
+
+      <div class="session">
+        <h2>Bachelor’s Degree Rate</h2>
+        <div class="row colors"></div>
+        <div class="row labels">
+          <div class="label">0%</div>
+          <div class="label">25%</div>
+          <div class="label">50%</div>
+          <div class="label">75%</div>
+          <div class="label">100%</div>
         </div>
+      </div>
     </div>
-    <div class='map-overlay' id='legend'></div> 
-    <div class="slidecontainer">
-        <p>Selected Year: <span id="selectedYear">2010</span></p>
-        <input type="range" min="2010" max="2023" value="2010" class="slider" id="dataRange">
-    </div>
-    <script src="js/index.js"></script>
-
-</body>
-
+  </body>
 </html>
+
+    <script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoibHlubmllMDMzMCIsImEiOiJjbTdzajl2MWExYzJmMnBvYXNpYndjamlxIn0.YiU2nPVukAuXf19cZTcfSw';
+
+    const years = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2021, 2022, 2023];
+    let currentYear = 2010;  // AI
+
+    const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/light-v11',
+        center: [-98.5795, 39.8283],
+        zoom: 12
+    });
+
+        map.on('load', () => {
+            years.forEach(year => {  // AI
+                map.addSource(`educationData_${year}`, {
+                    type: 'geojson',
+                    data: `assets/2010_data.geojson`
+                });
+
+                map.addLayer({
+                    id: `educationLayer_${year}`,
+                    type: 'circle',
+                    source: `educationData_${year}`,
+                    paint: {
+                        'circle-radius': [
+                            'interpolate',
+                            ['linear'],
+                            ['number', ['get', 'bachelor_degree_rate']],
+                            0, 4,
+                            25, 8,
+                            50, 12,
+                            75, 16,
+                            100, 24
+                        ],
+                        'circle-color': [
+                            'interpolate',
+                            ['linear'],
+                            ['number', ['get', 'bachelor_degree_rate']],
+                            0, '#2DC4B2',
+                            25, '#3BB3C3',
+                            50, '#669EC4',
+                            75, '#8B88B6',
+                            100, '#AA5E79'
+                        ],
+                        'circle-opacity': 0.8
+                    },
+                    'layout': {
+                        'visibility': year === currentYear ? 'visible' : 'none'
+                    }
+                });
+            });
+        });
+
+        // 
+        document.getElementById('yearSlider').addEventListener('input', (event) => {
+            const year = parseInt(event.target.value);
+            document.getElementById('yearLabel').textContent = year;
+
+            years.forEach(y => {
+                map.setLayoutProperty(`educationLayer_${y}`, 'visibility', y === year ? 'visible' : 'none');
+            });
+        });
