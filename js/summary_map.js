@@ -148,8 +148,19 @@ async function geojsonFetch(year) {
     });
 
 
+    // map.setPaintProperty('stateData-layer', 'fill-color', [
+    //     'step',
+    //     ['get', selectedColumn],
+    //     blocks[0], legendcolors[0],
+    //     blocks[1], legendcolors[1],
+    //     blocks[2], legendcolors[2],
+    //     blocks[3], legendcolors[3],
+    //     blocks[4], legendcolors[4]
+    // ]);
+
     map.setPaintProperty('stateData-layer', 'fill-color', [
-        'step',
+        'interpolate',
+        ['linear'],
         ['get', selectedColumn],
         blocks[0], legendcolors[0],
         blocks[1], legendcolors[1],
