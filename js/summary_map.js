@@ -1,5 +1,10 @@
 mapboxgl.accessToken = 'pk.eyJ1Ijoicm9zZS0xNjgiLCJhIjoiY202aWYxY3lsMDdxdjJpcHJoaHlmZzdiNiJ9.3wUanYJCI6409InuRs9e7A';
 
+// Close the welcome panel when the button is clicked
+document.getElementById('close-welcome').addEventListener('click', function () {
+    document.getElementById('welcome-panel').style.display = 'none';
+});
+
 //lynnie
 const years = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2021, 2022, 2023];
 let currentYear = 2010;  // AI

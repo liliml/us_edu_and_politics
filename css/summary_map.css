@@ -208,3 +208,41 @@ position: absolute;
 .mapboxgl-ctrl-group button.mapboxgl-ctrl-compass {
     cursor: unset;
 }
+
+/* Welcome panel styling */
+#welcome-panel {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+    text-align: left;
+    width: 400px;
+}
+
+#welcome-panel h2 {
+    text-align: center;
+    font-size: 22px;
+}
+
+#welcome-panel p {
+    font-size: 17px;
+}
+
+#welcome-panel button {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 15px;
+    padding: 8px 15px;
+    border: none;
+    background: #0078a8;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+}
