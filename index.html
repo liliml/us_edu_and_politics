@@ -16,20 +16,20 @@ created in the html folder -->
     <style>
       body {
         margin: 0;
-        padding: 0;
+        padding: 0px;
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       }
 
       #map {
         position: absolute;
-        top: 0;
+        top: 50px;
         bottom: 0;
         width: 100%;
       }
 
       #console {
         position: absolute;
-        top: 10px;
+        top: 75px;
         left: 10px;
         width: 260px;
         background-color: white;
@@ -80,10 +80,59 @@ created in the html folder -->
         display: inline-block;
         text-align: center;
       }
+
+      .topnav {
+          background-color: rgb(128, 123, 123);
+          overflow: hidden;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          position: fixed;
+          z-index: 1000;
+          width: 100%;
+          padding: 0;
+          border-radius: 10px 10px 10px 10px;
+      }
+
+      .topnav a {
+          color: black;
+          padding: 1%;
+          display: block;
+      }
+
+      .topnav a:hover {
+          background-color: rgb(196, 193, 193);
+          color: black
+      }
+
+      .topnav a.active {
+          background-color: rgb(36, 35, 36);
+          color: rgb(219, 219, 219)
+      }
+
+      .topnav .icon {
+        display: none;
+        font-size: 20px;
+        padding: 14px;
+        cursor: pointer;
+      }
     </style>
   </head>
 
   <body>
+    <div class="topnav" id="myTopnav">
+      <!-- Active link pointing to the index.html page -->
+      <a class="active" href="index.html">Map</a>
+
+      <!-- Links to other sections -->
+      <a href="html\intro.html">Introduction</a>
+      <a href="html\conclusion.html">Conclusion</a>
+
+      <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links on smaller screens -->
+      <a href="javascript:void(0);" class="icon" onclick="responsive_control()">
+          <i class="fa fa-bars"></i>
+      </a>
+  </div>
     <div id="map"></div>
     <div id="console">
       <h1>Educational Attainment in US</h1>
@@ -123,6 +172,19 @@ created in the html folder -->
 </html>
 
     <script>
+    function responsive_control() {
+    // Get the element with the id "myTopnav"
+      let x = document.getElementById("myTopnav");
+      // Check if the class name of the element is "topnav"
+      if (x.className === "topnav") {
+        // If it is, add the "responsive" class to the element
+        x.className += " responsive";
+      } else {
+        // If it's not, remove the "responsive" class from the element
+        x.className = "topnav";
+      }
+    }
+    
     mapboxgl.accessToken = 'pk.eyJ1IjoibHlubmllMDMzMCIsImEiOiJjbTdzajl2MWExYzJmMnBvYXNpYndjamlxIn0.YiU2nPVukAuXf19cZTcfSw';
 
     const years = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2021, 2022, 2023];
@@ -132,7 +194,7 @@ created in the html folder -->
         container: 'map',
         style: 'mapbox://styles/mapbox/light-v11',
         center: [-98.5795, 39.8283],
-        zoom: 12
+        zoom: 5
     });
 
         map.on('load', () => {
@@ -185,3 +247,4 @@ created in the html folder -->
                 map.setLayoutProperty(`educationLayer_${y}`, 'visibility', y === year ? 'visible' : 'none');
             });
         });
+    </script>
