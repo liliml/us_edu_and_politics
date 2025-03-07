@@ -57,7 +57,8 @@ async function geojsonFetch(year) {
         51
     ];
 
-    var legendcolors = [
+    //Still not working changing colors
+    let legendcolors = [
         '#f1eef6',
         '#bdc9e1',
         '#74a9cf',
@@ -65,25 +66,16 @@ async function geojsonFetch(year) {
         '#045a8d'
     ];
 
-    //Still not working changing colors
-    // if (stateData.features[0].properties.color === 'Blue') {
-        
-    //     colors.push(
-    //         '#f1eef6',
-    //         '#bdc9e1',
-    //         '#74a9cf',
-    //         '#2b8cbe',
-    //         '#045a8d'
-    //     );
-    // } else if (stateData.features[0].properties.color === 'Red') {
-    //     colors.push(
-    //         '#fee5d9',
-    //         '#fcae91',
-    //         '#fb6a4a',
-    //         '#de2d26',
-    //         '#a50f15'
-    //     );
-    // }
+
+    if (stateData.features[0].properties.Color === 'Red') {
+        legendcolors = [
+            '#fee5d9',
+            '#fcae91',
+            '#fb6a4a',
+            '#de2d26',
+            '#a50f15'
+        ];
+    }
 
     if (map.getSource('stateData')) {
         map.getSource('stateData').setData(stateData);
@@ -118,26 +110,23 @@ async function geojsonFetch(year) {
 
     //legend section
     const layers = [
-        '0-9',
-        '10-19',
-        '20-49',
-        '50-99',
-        '100-199',
-        '200-499',
-        '500-999',
-        '1000 and more'
+        '0-10',
+        '11-20',
+        '21-30',
+        '31-40',
+        '41-50'
     ];
 
-    const colors = [
-        '#FFEDA070',
-        '#FED97670',
-        '#FEB24C70',
-        '#FD8D3C70',
-        '#FC4E2A70',
-        '#E31A1C70',
-        '#BD002670',
-        '#80002670'
-    ];
+    // const colors = [
+    //     '#FFEDA070',
+    //     '#FED97670',
+    //     '#FEB24C70',
+    //     '#FD8D3C70',
+    //     '#FC4E2A70',
+    //     '#E31A1C70',
+    //     '#BD002670',
+    //     '#80002670'
+    // ];
     
 
 
@@ -145,7 +134,7 @@ async function geojsonFetch(year) {
     legend.innerHTML = "<b>Population Density<br>(people/sq.mi.)</b><br><br>";  
 
     layers.forEach((layer, i) => {
-        const color = colors[i];
+        const color = legendcolors[i];
         const item = document.createElement('div');
         const key = document.createElement('span');
         key.className = 'legend-key';
@@ -192,7 +181,7 @@ async function geojsonFetch(year) {
             document.getElementById('text-description').innerHTML = state.length ?
                 `<h3>${state[0].properties.name}</h3>
                 <p><strong><em>${state[0].properties.Est25Over}</strong> estimated people 25 and over</em></p>
-                <p><strong><em>${state[0].properties[[[7]]]}</strong>% estimated of people 25 and over who have high school education but no diploma</em></p>
+                <p><strong><em>${state[0].properties['9_12NoDip']}</strong>% estimated of people 25 and over who have high school education but no diploma</em></p>
                 ` :
                 `<p>Hover over a state!</p>`;
         });    
@@ -266,7 +255,7 @@ async function geojsonFetch(year) {
                 `<h3>${state[0].properties.name}</h3>
                 <p><strong><em>${state[0].properties.Est25Over}</strong> estimated people 25 and over</em></p>
                 <p><strong><em>${state[0].properties.Less9Gra}</strong>% estimated of people 25 and over who have less then 9th grade education</em></p>
-                <p><strong><em>${state[0].properties[[[7]]]}</strong>% estimated of people 25 and over who have high school education but no diploma</em></p>
+                <p><strong><em>${state[0].properties['9_12NoDip']}</strong>% estimated of people 25 and over who have high school education but no diploma</em></p>
                 <p><strong><em>${state[0].properties.HighGrad}</strong>% estimated of people 25 and over who only have high school diplomas</em></p>
                 <p><strong><em>${state[0].properties.Col_NoDeg}</strong>% estimated of people 25 and over who went to college but have no degree</em></p>
                 <p><strong><em>${state[0].properties.AssocDeg}</strong>% estimated of people 25 and over who only have an associates degree</em></p>
