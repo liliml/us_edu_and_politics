@@ -258,5 +258,36 @@ position: absolute;
     ); */
     
 .topnav {
-    color: #04AA6D;
+    background-color: rgb(128, 123, 123);
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    padding: 0;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.topnav a {
+    color: black;
+    padding: 1%;
+    display: block;
+}
+
+.topnav a:hover {
+    background-color: rgb(196, 193, 193);
+    color: black
+}
+
+.topnav a.active {
+    background-color: rgb(36, 35, 36);
+    color: rgb(219, 219, 219)
+}
+
+.topnav .icon {
+    display: none;
+    font-size: 20px;
+    padding: 14px;
+    cursor: pointer;
 }
