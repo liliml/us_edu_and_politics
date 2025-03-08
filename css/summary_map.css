@@ -264,20 +264,25 @@ position: absolute;
     background-color: rgb(128, 123, 123);
     overflow: hidden;
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+    justify-content: space-evenly;
+    /* flex-wrap: wrap;
+    align-items: center; */
     position: fixed;
     width: 100%;
     padding: 0;
     margin: none;
     /* border-radius: 10px 10px 10px 10px; */
-    /* z-index: 1; */
+    z-index: 1;
 }
 
 .topnav a {
-    color: black;
-    padding: 1%;
+    float: left;
     display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 26px;
 }
 
 .topnav a:hover {
