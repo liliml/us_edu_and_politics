@@ -266,7 +266,9 @@ position: absolute;
 
 .topnav a:hover {
     background-color: rgb(196, 193, 193);
-    color: black
+    color: black;
+    text-decoration: underline;
+    font-style: italic;
 }
 
 .topnav a.active {
