@@ -146,7 +146,7 @@ async function geojsonFetch(year) {
     } else if (selectedColumn == "Grad_Prof") {
         legend.innerHTML = "<b>% estimated of people 25 and over who have professional or graduate degrees<br></b><br><br>";
     } else {
-        legend.innerHTML = "<b>Population Density<br>(people/sq.mi.)</b><br><br>";
+        legend.innerHTML = "<b>See summary statistics for each state<br></b><br><br>";
     }
     
     //ORGINAL IN LINE BELOW!!!
