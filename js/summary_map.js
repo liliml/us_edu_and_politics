@@ -129,9 +129,41 @@ async function geojsonFetch(year) {
     // ];
     
 
-
     const legend = document.getElementById('legend');
-    legend.innerHTML = "<b>Population Density<br>(people/sq.mi.)</b><br><br>";  
+    
+    if (selectedColumn == "Less9Gra") {        
+        legend.innerHTML = "<b>% estimated of people 25 and over who have less then 9th grade education<br></b><br><br>";
+    } else if (selectedColumn == "9_12NoDip") {
+        legend.innerHTML = "<b>% estimated of people 25 and over who have high school education but no diploma<br></b><br><br>";  
+    } else if (selectedColumn == "HighGrad") {
+        legend.innerHTML = "<b>% estimated of people 25 and over who only have high school diplomas<br></b><br><br>";
+    } else if (selectedColumn == "Col_NoDeg") {
+        legend.innerHTML = "<b>% estimated of people 25 and over who went to college but have no degree<br></b><br><br>";
+    } else if (selectedColumn == "AssocDeg") {
+        legend.innerHTML = "<b>% estimated of people 25 and over who only have an associates degree<br></b><br><br>";
+    } else if (selectedColumn == "BachDeg") {
+        legend.innerHTML = "<b>% estimated of people 25 and over who have a bachlor's degree<br></b><br><br>";
+    } else if (selectedColumn == "Grad_Prof") {
+        legend.innerHTML = "<b>% estimated of people 25 and over who have professional or graduate degrees<br></b><br><br>";
+    } else {
+        legend.innerHTML = "<b>Population Density<br>(people/sq.mi.)</b><br><br>";
+    }
+    
+    //ORGINAL IN LINE BELOW!!!
+    //legend.innerHTML = "<b>Population Density<br>(people/sq.mi.)</b><br><br>";  
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     layers.forEach((layer, i) => {
         const color = legendcolors[i];
