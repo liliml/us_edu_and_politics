@@ -1,4 +1,5 @@
-//for nav  bar 
+
+// for nav bar
 // Get the element with the class "icon"
 let icon = document.getElementsByClassName("icon")[0];
 
