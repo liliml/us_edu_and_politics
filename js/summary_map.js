@@ -1,4 +1,4 @@
-mapboxgl.accessToken = 'pk.eyJ1Ijoicm9zZS0xNjgiLCJhIjoiY202aWYxY3lsMDdxdjJpcHJoaHlmZzdiNiJ9.3wUanYJCI6409InuRs9e7A';
+mapboxgl.accessToken = 'pk.eyJ1IjoibHlubmllMDMzMCIsImEiOiJjbTdzajl2MWExYzJmMnBvYXNpYndjamlxIn0.YiU2nPVukAuXf19cZTcfSw';
 
 // Close the welcome panel when the button is clicked
 document.getElementById('close-welcome').addEventListener('click', function () {
@@ -11,12 +11,11 @@ let currentYear = 2010;
 //
 
 const map = new mapboxgl.Map({
-        container: 'map', // container ID
-        style: 'mapbox://styles/mapbox/light-v10', // style URL //MILE'S MAP, IS NOT WORKING: style: 'mapbox://styles/millzm/cm7zcffi000co01ss0ba3asfe', // Mile's map style
-        zoom: 3, // starting zoom
-        center: [-100, 40] // starting center
-    }
-);
+    container: 'map',
+    style: 'mapbox://styles/millzm/cm7zcffi000co01ss0ba3asfe',
+    center: [-98.5795, 39.8283],
+    zoom: 5
+});
 
 
 var slider = document.getElementById("yearSlider");
