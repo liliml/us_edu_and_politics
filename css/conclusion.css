@@ -1,0 +1,155 @@
+h2, h3 {
+  margin: 10px;
+  font-size: 18px;
+}
+
+h3 {
+  font-size: 16px;
+}
+
+p {
+  margin: 10px;
+}
+  
+.topnav {
+  background-color: rgb(128, 123, 123);
+  overflow: hidden;
+  display: flex;
+  /* display:inline-block; */
+  /* justify-content: space-between; */
+  justify-content: space-evenly;
+
+
+  /* flex-wrap: wrap;
+  align-items: center; */
+  position: fixed;
+  width: 100%;
+  padding: 0;
+  margin: none;
+  /* border-radius: 10px 10px 10px 10px; */
+  z-index: 1;
+}
+
+.topnav a {
+  float: left;
+  /* display: block; */
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 26px;
+  /* justify-content: space-evenly; */
+  width: 50vw;
+  /* display:inline-block; */
+}
+
+.topnav a:hover {
+  background-color: rgb(196, 193, 193);
+  color: black;
+  text-decoration: underline;
+  font-style: italic;
+  /* width: 15vw; */
+  /* justify-content: space-evenly; */
+}
+
+.topnav a.active {
+  background-color: rgb(36, 35, 36);
+  color: rgb(219, 219, 219);
+  /* width: 15vw; */
+  /* justify-content: space-evenly; */
+}
+
+.topnav .icon {
+  display: none;
+  font-size: 20px;
+  padding: 14px;
+  cursor: pointer;
+}
+
+/* Show the icon that should open and close the topnav */
+.topnav a.icon {
+  float: right;
+  display: block;
+}
+.indented {
+text-indent: 40px;
+}
+
+table {
+width: 100%;
+text-align: left;
+border-collapse: collapse;
+/* border: 1px solid #ddd; */
+}
+
+#statsTable th, #statsTable td {
+padding: 10px;
+text-align: left;
+/* border-bottom: 1px solid #050505; */
+/* border-left: 1px solid #050505; */
+border: 1px solid #000000;
+}
+
+.tableheader {
+background-color: rgb(222, 222, 222);
+/* border: #000000;
+border-radius: 2px; */
+text-decoration: underline;
+}
+
+.conclusion {
+margin-bottom: 1vh;
+font-size: 25px;
+text-decoration: underline;
+font-weight: 600;
+}
+
+.sum_stats {
+margin-top: 3vh;
+margin-bottom: 1vh;
+font-size: 25px;
+text-decoration: underline;
+font-weight: 600;
+}
+
+#yearSlider {
+margin-bottom: 2vh;
+}
+
+/* When the screen is less than 800 pixels wide */
+/* @media screen and (max-width: 800px) { */
+  /* Hide all links, except for the selected tab */
+  /* .topnav a:not(.active) {
+    display: none;
+  } */
+
+  /* Show the icon that should open and close the topnav */
+  /* .topnav a.icon {
+    float: right;
+    display: block;
+  } */
+  
+/* } */
+
+/* When the screen is less than 800 pixels wide, if the user clicks on the icon */
+/* the "responsive" class attribute will be added to the topnav by the JavaScript code */
+/* This media query sets the style for the unfolded topnav */
+/* It makes the topnav look good on small screens (display the links vertically instead of horizontally)  */
+/* @media screen and (max-width: 800px) {
+  .topnav.responsive {
+    position: relative;
+  }
+
+  .topnav.responsive a.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+
+} */
