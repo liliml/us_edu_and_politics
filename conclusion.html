@@ -22,10 +22,85 @@
         <a href="javascript:void(0);" class="icon">
             <i class="fa fa-bars"></i>
         </a>
+        <br>
+        <br>
+        <br>
+        
     <main id="container">
-        <div id="side-panel">
+        <section id="conclusion-text">
+            <h2>Conclusion</h2>
+            <p class="indented">
+                We were </p>
+        </section>
+        <div class="session">
+            <h2>Year: <label id="yearLabel">2010</label></h2>
+            <input
+              id="yearSlider"
+              type="range"
+              min="2010"
+              max="2023"
+              step="1"
+              value="2010"
+              style="width: 100%"
+            />
+            <h2>Summary Statistics</h2>
+            <table id="statsTable">
+                <thead>
+                    <tr>
+                        <th style="text-decoration: underline;">Education Level</th>
+                        <th style="text-decoration: underline;">Minimum</th>
+                        <th style="text-decoration: underline;">Maximum</th>
+                        <th style="text-decoration: underline;">Average</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Less then 9th Grade</td>
+                        <td id="less9th-min">-</td>
+                        <td id="less9th-max">-</td>
+                        <td id="less9th-avg">-</td>
+                    </tr>
+                    <tr>
+                        <td>No High School Diploma</td>
+                        <td id="nohs-min">-</td>
+                        <td id="nohs-max">-</td>
+                        <td id="nohs-avg">-</td>
+                    </tr>
+                    <tr>
+                        <td>Only High School Diploma</td>
+                        <td id="hsdip-min">-</td>
+                        <td id="hsdip-max">-</td>
+                        <td id="hsdip-avg">-</td>
+                    </tr>
+                    <tr>
+                        <td>College No Degree</td>
+                        <td id="collno-min">-</td>
+                        <td id="collno-max">-</td>
+                        <td id="collno-avg">-</td>
+                    </tr>
+                    <tr>
+                        <td>Associate's Degree</td>
+                        <td id="asso-min">-</td>
+                        <td id="asso-max">-</td>
+                        <td id="asso-avg">-</td>
+                    </tr>
+                    <tr>
+                        <td>Bachelor's Degree</td>
+                        <td id="bach-min">-</td>
+                        <td id="bach-max">-</td>
+                        <td id="bach-avg">-</td>
+                    </tr>
+                    <tr>
+                        <td>Master's or Higher</td>
+                        <td id="mast-min">-</td>
+                        <td id="mast-max">-</td>
+                        <td id="mast-avg">-</td>
+                    </tr>
+                </tbody>
+            </table> 
         </div>
         <div id="map"></div>
     </main>
+    <script src="js/conclusion.js"></script>
  </body>   
 <html>   

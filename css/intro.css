@@ -71,6 +71,9 @@ p {
     float: right;
     display: block;
 }
+.indented {
+  text-indent: 20px; /* Adjust the value as needed */
+}
 
 
   /* When the screen is less than 800 pixels wide */

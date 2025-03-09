@@ -71,7 +71,21 @@ p {
     float: right;
     display: block;
 }
+.indented {
+  text-indent: 40px;
+}
 
+table {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+#statsTable th, #statsTable td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #050505;
+}
 
   /* When the screen is less than 800 pixels wide */
 /* @media screen and (max-width: 800px) { */
