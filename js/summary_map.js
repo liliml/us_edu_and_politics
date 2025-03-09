@@ -36,8 +36,8 @@ let currentYear = 2010;
 const map = new mapboxgl.Map({
         container: 'map', // container ID
         style: 'mapbox://styles/millzm/cm80orv0g006p01sjhiyxdi37', // Mile's map style
-        zoom: 3.5, // starting zoom
-        center: [-100, 50] // starting center
+        zoom: 3, // starting zoom
+        center: [-110, 55] // starting center
     }
 );
 
