@@ -44,14 +44,15 @@ const map = new mapboxgl.Map({
     }
 );
 
-//********TODO, ASK ABOUT LINES BELOW!!!! CURRENTLY BREAKS THE TIME SLIDER AS IN YEARS DON'T CHANGE AND DOES NOT CHANGE THE NAME OF THE PRESIDENT OR PARTY??
-// document.getElementById('president').innerHTML = stateData.features.properties.President; 
-// // source: https://stackoverflow.com/questions/52097840/how-to-overwrite-text-in-p-tag-using-javascript
-// document.getElementById('polparty').innerText = stateData.features.properties.Pol_Party;
+
+
 
 var slider = document.getElementById("yearSlider");
 var selectedYear = document.getElementById("yearLabel");
 var selectedColumn = 'HighGrad'; // Default column
+
+
+
 
 // Update the map data based on the slider value
 slider.oninput = function() {
@@ -79,6 +80,23 @@ async function geojsonFetch(year) {
     let response = await fetch(`assets/${year}_data.geojson`);
     let stateData = await response.json();
 
+
+    //********TODO, ASK ABOUT LINES BELOW!!!! CURRENTLY BREAKS THE TIME SLIDER AS IN YEARS DON'T CHANGE AND DOES NOT CHANGE THE NAME OF THE PRESIDENT OR PARTY??
+    // document.getElementById('president').innerHTML = stateData.features.properties.President; 
+    // // source: https://stackoverflow.com/questions/52097840/how-to-overwrite-text-in-p-tag-using-javascript
+    // document.getElementById('polparty').innerText = stateData.features.properties.Pol_Party;
+    // const varpolparty = document.getElementById('polparty');
+    // if (stateData.features[0].properties.Pol_Party == "Blue") {        
+    //     // varpolparty.innerHTML = "<b>${state[0].properties.Est25Over}<br></b><br><br>";
+    //     const state = map.queryRenderedFeatures(point, {
+    //         layers: ['stateData-layer']
+    //     });
+    //     document.getElementById('polparty').innerHTML = state.length ?
+    //         `<p><strong><em>${state[0].properties.Pol_Party}</strong> estimated people 25 and over</em></p>` :
+    //         `<p>no political party</p>`;
+    // }
+
+    //ORGINAL
     const blocks = [
         11,
         21,
@@ -86,6 +104,29 @@ async function geojsonFetch(year) {
         41,
         51
     ];
+
+    // let blocks = [];
+    // if (selectedColumn == "Summary") {
+       
+    
+    //     //legend section
+    //     blocks = [
+    //         1000001,
+    //         2000001,
+    //         3000001,
+    //         4000001,
+    //         5000001
+    //     ];
+    // } else {
+    //     //legend section
+    //     blocks = [
+    //         11,
+    //         21,
+    //         31,
+    //         41,
+    //         51
+    //     ];
+    // }
 
     //Still not working changing colors
     let legendcolors = [
@@ -297,7 +338,7 @@ async function geojsonFetch(year) {
 
 
 
-
+    //ORGINAL DON'T TOUCH!!!
     layers.forEach((layer, i) => {
         const color = legendcolors[i];
         const item = document.createElement('div');
