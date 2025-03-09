@@ -17,6 +17,10 @@ const map = new mapboxgl.Map({
     zoom: 5
 });
 
+map.on('style.load', () => {
+    map.setProjection('mercator')
+})
+
 
 var slider = document.getElementById("yearSlider");
 var selectedYear = document.getElementById("yearLabel");
