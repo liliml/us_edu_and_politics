@@ -35,7 +35,7 @@ let currentYear = 2010;
 
 const map = new mapboxgl.Map({
         container: 'map', // container ID
-        style: 'mapbox://styles/millzm/cm7zcffi000co01ss0ba3asfe', // Mile's map style
+        style: 'mapbox://styles/millzm/cm80orv0g006p01sjhiyxdi37', // Mile's map style
         zoom: 3.5, // starting zoom
         center: [-100, 50] // starting center
     }
@@ -204,10 +204,10 @@ async function geojsonFetch(year) {
         //legend section
         layers = [
             '0-100,000',
-            '100001-200000',
-            '200001-400000',
-            '500001-600000',
-            '700001-800000+'
+            '100,001-200,000',
+            '200,001-400,000',
+            '500,001-600,000',
+            '600,001-700,000+'
         ];
     } else {
         //legend section
@@ -310,7 +310,7 @@ async function geojsonFetch(year) {
 
     //NOTE: The code below breaks the summary page as it does not give correct color and breaks 
     // it such that the info for the state shown is not correct and does not show all info for the summary page
-    
+    //********TODO, GET THE CODE BELOW TO WORK, SEE NOTE ABOVE!!!!
     // if (selectedColumn == "Summary") {
     //     map.setPaintProperty('stateData-layer', 'fill-color', [
     //         'interpolate',
