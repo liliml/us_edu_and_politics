@@ -1,4 +1,3 @@
-
 // for nav bar
 // Get the element with the class "icon"
 let icon = document.getElementsByClassName("icon")[0];
@@ -298,39 +297,43 @@ async function geojsonFetch(year) {
 
 
     //ORGINAL DON'T TOUCH!!!
-    // map.setPaintProperty('stateData-layer', 'fill-color', [
-    //     'interpolate',
-    //     ['linear'],
-    //     ['get', selectedColumn],
-    //     blocks[0], legendcolors[0],
-    //     blocks[1], legendcolors[1],
-    //     blocks[2], legendcolors[2],
-    //     blocks[3], legendcolors[3],
-    //     blocks[4], legendcolors[4]
-    // ]);
-    if (selectedColumn == "Summary") {
-        map.setPaintProperty('stateData-layer', 'fill-color', [
-            'interpolate',
-            ['linear'],
-            ['get', Est25Over],
-            blocks[0], legendcolors[0],
-            blocks[1], legendcolors[1],
-            blocks[2], legendcolors[2],
-            blocks[3], legendcolors[3],
-            blocks[4], legendcolors[4]
-        ]);
-    } else {
-        map.setPaintProperty('stateData-layer', 'fill-color', [
-            'interpolate',
-            ['linear'],
-            ['get', selectedColumn],
-            blocks[0], legendcolors[0],
-            blocks[1], legendcolors[1],
-            blocks[2], legendcolors[2],
-            blocks[3], legendcolors[3],
-            blocks[4], legendcolors[4]
-        ]);
-    }
+    map.setPaintProperty('stateData-layer', 'fill-color', [
+        'interpolate',
+        ['linear'],
+        ['get', selectedColumn],
+        blocks[0], legendcolors[0],
+        blocks[1], legendcolors[1],
+        blocks[2], legendcolors[2],
+        blocks[3], legendcolors[3],
+        blocks[4], legendcolors[4]
+    ]);
+
+    //NOTE: The code below breaks the summary page as it does not give correct color and breaks 
+    // it such that the info for the state shown is not correct and does not show all info for the summary page
+    
+    // if (selectedColumn == "Summary") {
+    //     map.setPaintProperty('stateData-layer', 'fill-color', [
+    //         'interpolate',
+    //         ['linear'],
+    //         ['get', Est25Over],
+    //         blocks[0], legendcolors[0],
+    //         blocks[1], legendcolors[1],
+    //         blocks[2], legendcolors[2],
+    //         blocks[3], legendcolors[3],
+    //         blocks[4], legendcolors[4]
+    //     ]);
+    // } else {
+    //     map.setPaintProperty('stateData-layer', 'fill-color', [
+    //         'interpolate',
+    //         ['linear'],
+    //         ['get', selectedColumn],
+    //         blocks[0], legendcolors[0],
+    //         blocks[1], legendcolors[1],
+    //         blocks[2], legendcolors[2],
+    //         blocks[3], legendcolors[3],
+    //         blocks[4], legendcolors[4]
+    //     ]);
+    // }
 
 
 
