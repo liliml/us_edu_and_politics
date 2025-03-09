@@ -204,7 +204,9 @@ async function geojsonFetch(year) {
     //     '41-50'
     // ];
 
-    let layers = []
+    
+    ///ORGINAL DON'T TOUCH!!!
+    let layers = [];
     if (selectedColumn == "Summary") {
        
     
@@ -226,6 +228,25 @@ async function geojsonFetch(year) {
             '41-50'
         ];
     }
+
+    //BELOW DOES NOT WORK, NEITHER DOES ABOVE
+    // let layers = [
+    //         '0-10',
+    //         '11-20',
+    //         '21-30',
+    //         '31-40',
+    //         '41-50'];
+    // if (selectedColumn == "Summary") {
+    //     //legend section
+    //     layers = [
+    //         '0-1,000,000',
+    //         '1,000,001-2,000,000',
+    //         '2,000,001-3,000,000',
+    //         '3,000,001-4,000,000',
+    //         '4,000,001-5,000,000+'
+    //     ];
+    // } 
+
 
 
 
