@@ -102,42 +102,7 @@ position: absolute;
 /*  */
 
 /* Garett slider and tabs */
-.slidecontainer {
-    width: 100%; /* Width of the outside container */
-    text-align: center; /* Center the text */
-    position: absolute;
-    bottom: 20px;
-    left: 0;
-    right: 0;
-    margin: auto;
-}
 
-.slidecontainer p {
-    margin: 0; /* Remove margin */
-    padding-bottom: 30px; /* Add padding to separate from slider */
-    position: absolute;
-    bottom: 50px; /* Position above the slider */
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-/* The slider itself */
-.slider {
-    -webkit-appearance: none;  /* Override default CSS styles */
-    appearance: none;
-    width: 90%; /* Full-width */
-    height: 30px; /* Specified height */
-    background: #000000; /* Grey background */
-    outline: none; /* Remove outline */
-    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
-    transition: opacity .2s;
-    position: absolute;
-    bottom: 40px;
-    left: 0;
-    right: 0;
-    margin: auto;
-}
 
 .tab {
     overflow: visible;
@@ -243,7 +208,11 @@ position: absolute;
     background-color: rgb(128, 123, 123);
     overflow: hidden;
     display: flex;
+    /* display:inline-block; */
+    /* justify-content: space-between; */
     justify-content: space-evenly;
+
+
     /* flex-wrap: wrap;
     align-items: center; */
     position: fixed;
@@ -256,12 +225,15 @@ position: absolute;
 
 .topnav a {
     float: left;
-    display: block;
+    /* display: block; */
     color: #f2f2f2;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
     font-size: 26px;
+    /* justify-content: space-evenly; */
+    width: 50vw;
+    /* display:inline-block; */
 }
 
 .topnav a:hover {
@@ -269,11 +241,15 @@ position: absolute;
     color: black;
     text-decoration: underline;
     font-style: italic;
+    /* width: 15vw; */
+    /* justify-content: space-evenly; */
 }
 
 .topnav a.active {
     background-color: rgb(36, 35, 36);
-    color: rgb(219, 219, 219)
+    color: rgb(219, 219, 219);
+    /* width: 15vw; */
+    /* justify-content: space-evenly; */
 }
 
 .topnav .icon {
