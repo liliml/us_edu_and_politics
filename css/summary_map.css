@@ -38,6 +38,7 @@ p {
     border-radius: 3px;
     /* padding-bottom: auto; */
     /* height: auto; */
+    padding-top: 75px;
 }
 
 /* map overlay elements below */
@@ -101,64 +102,7 @@ position: absolute;
 /*  */
 
 /* Garett slider and tabs */
-.slidecontainer {
-    width: 100%; /* Width of the outside container */
-    text-align: center; /* Center the text */
-    position: absolute;
-    bottom: 20px;
-    left: 0;
-    right: 0;
-    margin: auto;
-}
 
-.slidecontainer p {
-    margin: 0; /* Remove margin */
-    padding-bottom: 30px; /* Add padding to separate from slider */
-    position: absolute;
-    bottom: 50px; /* Position above the slider */
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-/* The slider itself */
-.slider {
-    -webkit-appearance: none;  /* Override default CSS styles */
-    appearance: none;
-    width: 90%; /* Full-width */
-    height: 30px; /* Specified height */
-    background: #000000; /* Grey background */
-    outline: none; /* Remove outline */
-    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
-    transition: opacity .2s;
-    position: absolute;
-    bottom: 40px;
-    left: 0;
-    right: 0;
-    margin: auto;
-}
-
-/* Mouse-over effects */
-.slider:hover {
-    opacity: 1; /* Fully shown on mouse-over */
-}
-
-/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
-.slider::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Override default look */
-    appearance: none;
-    width: 25px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
-    background: #04AA6D; /* Green background */
-    cursor: pointer; /* Cursor on hover */
-}
-
-.slider::-moz-range-thumb {
-    width: 25px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
-    background: #04AA6D; /* Green background */
-    cursor: pointer; /* Cursor on hover */
-}
 
 .tab {
     overflow: visible;
@@ -264,30 +208,48 @@ position: absolute;
     background-color: rgb(128, 123, 123);
     overflow: hidden;
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+    /* display:inline-block; */
+    /* justify-content: space-between; */
+    justify-content: space-evenly;
+
+
+    /* flex-wrap: wrap;
+    align-items: center; */
     position: fixed;
     width: 100%;
     padding: 0;
     margin: none;
     /* border-radius: 10px 10px 10px 10px; */
-    /* z-index: 1; */
+    z-index: 1;
 }
 
 .topnav a {
-    color: black;
-    padding: 1%;
-    display: block;
+    float: left;
+    /* display: block; */
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 26px;
+    /* justify-content: space-evenly; */
+    width: 50vw;
+    /* display:inline-block; */
 }
 
 .topnav a:hover {
     background-color: rgb(196, 193, 193);
-    color: black
+    color: black;
+    text-decoration: underline;
+    font-style: italic;
+    /* width: 15vw; */
+    /* justify-content: space-evenly; */
 }
 
 .topnav a.active {
     background-color: rgb(36, 35, 36);
-    color: rgb(219, 219, 219)
+    color: rgb(219, 219, 219);
+    /* width: 15vw; */
+    /* justify-content: space-evenly; */
 }
 
 .topnav .icon {
@@ -302,3 +264,42 @@ position: absolute;
     float: right;
     display: block;
   }
+
+
+  /* When the screen is less than 800 pixels wide */
+/* @media screen and (max-width: 800px) { */
+    /* Hide all links, except for the selected tab */
+    /* .topnav a:not(.active) {
+      display: none;
+    } */
+  
+    /* Show the icon that should open and close the topnav */
+    /* .topnav a.icon {
+      float: right;
+      display: block;
+    } */
+    
+  /* } */
+  
+  /* When the screen is less than 800 pixels wide, if the user clicks on the icon */
+  /* the "responsive" class attribute will be added to the topnav by the JavaScript code */
+  /* This media query sets the style for the unfolded topnav */
+  /* It makes the topnav look good on small screens (display the links vertically instead of horizontally)  */
+  /* @media screen and (max-width: 800px) {
+    .topnav.responsive {
+      position: relative;
+    }
+  
+    .topnav.responsive a.icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  
+    .topnav.responsive a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+  
+  } */

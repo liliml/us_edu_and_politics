@@ -1,26 +1,53 @@
-mapboxgl.accessToken = 'pk.eyJ1IjoibHlubmllMDMzMCIsImEiOiJjbTdzajl2MWExYzJmMnBvYXNpYndjamlxIn0.YiU2nPVukAuXf19cZTcfSw';
+// for nav bar
+// Get the element with the class "icon"
+let icon = document.getElementsByClassName("icon")[0];
+
+// Add an event listener for the 'click' event on the icon element
+icon.addEventListener('click', responsive_control);
+
+// Function to control the responsiveness of the navigation bar
+function responsive_control() {
+  // Get the element with the id "myTopnav"
+  let x = document.getElementById("myTopnav");
+
+  // Check if the class name of the element is "topnav"
+  if (x.className === "topnav") {
+    // If it is, add the "responsive" class to the element
+    x.className += " responsive";
+  } else {
+    // If it's not, remove the "responsive" class from the element
+    x.className = "topnav";
+  }
+}
+
+
+mapboxgl.accessToken = 'pk.eyJ1Ijoicm9zZS0xNjgiLCJhIjoiY202aWYxY3lsMDdxdjJpcHJoaHlmZzdiNiJ9.3wUanYJCI6409InuRs9e7A';
 
 // Close the welcome panel when the button is clicked
 document.getElementById('close-welcome').addEventListener('click', function () {
     document.getElementById('welcome-panel').style.display = 'none';
 });
 
+
 //lynnie
 const years = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2021, 2022, 2023];
 let currentYear = 2010; 
 //
 
+
+
 const map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/millzm/cm7zcffi000co01ss0ba3asfe',
-    center: [-98.5795, 39.8283],
-    zoom: 5
-});
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox/light-v10', // style URL //MILE'S MAP, IS NOT WORKING: style: 'mapbox://styles/millzm/cm7zcffi000co01ss0ba3asfe', // Mile's map style
+        zoom: 3, // starting zoom
+        center: [-100, 40] // starting center
+    }
+);
 
-map.on('style.load', () => {
-    map.setProjection('mercator')
-})
-
+//********TODO, ASK ABOUT LINES BELOW!!!! CURRENTLY BREAKS THE TIME SLIDER AS IN YEARS DON'T CHANGE AND DOES NOT CHANGE THE NAME OF THE PRESIDENT OR PARTY??
+// document.getElementById('president').innerHTML = stateData.features.properties.President; 
+// // source: https://stackoverflow.com/questions/52097840/how-to-overwrite-text-in-p-tag-using-javascript
+// document.getElementById('polparty').innerText = stateData.features.properties.Pol_Party;
 
 var slider = document.getElementById("yearSlider");
 var selectedYear = document.getElementById("yearLabel");
@@ -80,45 +107,127 @@ async function geojsonFetch(year) {
         ];
     }
 
+
     if (map.getSource('stateData')) {
         map.getSource('stateData').setData(stateData);
     } else {
-        map.on('load', function loadingData() {
-            map.addSource('stateData', {
-                type: 'geojson',
-                data: stateData
-            });
+        //ORIGINAL DON'T TOUCH
+        // map.on('load', function loadingData() {
+        //     map.addSource('stateData', {
+        //         type: 'geojson',
+        //         data: stateData
+        //     });
 
-            map.addLayer({
-                'id': 'stateData-layer',
-                'type': 'fill',
-                'source': 'stateData',
-                'paint': {
-                    'fill-color': [
-                        'interpolate',
-                        ['linear'],
-                        ['get', selectedColumn],
-                        blocks[0], legendcolors[0],
-                        blocks[1], legendcolors[1],
-                        blocks[2], legendcolors[2],
-                        blocks[3], legendcolors[3],
-                        blocks[4], legendcolors[4]
-                    ],
-                    'fill-outline-color': '#BBBBBB',
-                    'fill-opacity': 0.7,
-                }
+        //     map.addLayer({
+        //         'id': 'stateData-layer',
+        //         'type': 'fill',
+        //         'source': 'stateData',
+        //         'paint': {
+        //             'fill-color': [
+        //                 'interpolate',
+        //                 ['linear'],
+        //                 ['get', selectedColumn],
+        //                 blocks[0], legendcolors[0],
+        //                 blocks[1], legendcolors[1],
+        //                 blocks[2], legendcolors[2],
+        //                 blocks[3], legendcolors[3],
+        //                 blocks[4], legendcolors[4]
+        //             ],
+        //             'fill-outline-color': '#BBBBBB',
+        //             'fill-opacity': 0.7,
+        //         }
+        //     });
+        // });
+        if (selectedColumn == "Summary") {
+            map.on('load', function loadingData() {
+                map.addSource('stateData', {
+                    type: 'geojson',
+                    data: stateData
+                });
+    
+                map.addLayer({
+                    'id': 'stateData-layer',
+                    'type': 'fill',
+                    'source': 'stateData',
+                    'paint': {
+                        'fill-color': [
+                            'interpolate',
+                            ['linear'],
+                            ['get', Est25Over],
+                            blocks[0], legendcolors[0],
+                            blocks[1], legendcolors[1],
+                            blocks[2], legendcolors[2],
+                            blocks[3], legendcolors[3],
+                            blocks[4], legendcolors[4]
+                        ],
+                        'fill-outline-color': '#BBBBBB',
+                        'fill-opacity': 0.7,
+                    }
+                });
             });
-        });
+        } else {
+            map.on('load', function loadingData() {
+                map.addSource('stateData', {
+                    type: 'geojson',
+                    data: stateData
+                });
+    
+                map.addLayer({
+                    'id': 'stateData-layer',
+                    'type': 'fill',
+                    'source': 'stateData',
+                    'paint': {
+                        'fill-color': [
+                            'interpolate',
+                            ['linear'],
+                            ['get', selectedColumn],
+                            blocks[0], legendcolors[0],
+                            blocks[1], legendcolors[1],
+                            blocks[2], legendcolors[2],
+                            blocks[3], legendcolors[3],
+                            blocks[4], legendcolors[4]
+                        ],
+                        'fill-outline-color': '#BBBBBB',
+                        'fill-opacity': 0.7,
+                    }
+                });
+            });    
+        }
     }
 
     //legend section
-    const layers = [
-        '0-10',
-        '11-20',
-        '21-30',
-        '31-40',
-        '41-50'
-    ];
+    // const layers = [
+    //     '0-10',
+    //     '11-20',
+    //     '21-30',
+    //     '31-40',
+    //     '41-50'
+    // ];
+
+    let layers = []
+    if (selectedColumn == "Summary") {
+       
+    
+        //legend section
+        layers = [
+            '0-100,000',
+            '100,001-200,000',
+            '200,001-400,000',
+            '500,001-600,000',
+            '600,001-700,000+'
+        ];
+    } else {
+        //legend section
+        layers = [
+            '0-10',
+            '11-20',
+            '21-30',
+            '31-40',
+            '41-50'
+        ];
+    }
+
+
 
     // const colors = [
     //     '#FFEDA070',
@@ -149,7 +258,7 @@ async function geojsonFetch(year) {
     } else if (selectedColumn == "Grad_Prof") {
         legend.innerHTML = "<b>% estimated of people 25 and over who have professional or graduate degrees<br></b><br><br>";
     } else {
-        legend.innerHTML = "<b>See summary statistics for each state<br></b><br><br>";
+        legend.innerHTML = "<b>State Population. Hover over a state for additional statistics<br></b><br><br>";
     }
     
     //ORGINAL IN LINE BELOW!!!
@@ -193,6 +302,8 @@ async function geojsonFetch(year) {
     //     blocks[4], legendcolors[4]
     // ]);
 
+
+    //ORGINAL DON'T TOUCH!!!
     map.setPaintProperty('stateData-layer', 'fill-color', [
         'interpolate',
         ['linear'],
@@ -203,6 +314,35 @@ async function geojsonFetch(year) {
         blocks[3], legendcolors[3],
         blocks[4], legendcolors[4]
     ]);
+
+    //NOTE: The code below breaks the summary page as it does not give correct color and breaks 
+    // it such that the info for the state shown is not correct and does not show all info for the summary page
+    //********TODO, GET THE CODE BELOW TO WORK, SEE NOTE ABOVE!!!!
+    // if (selectedColumn == "Summary") {
+    //     map.setPaintProperty('stateData-layer', 'fill-color', [
+    //         'interpolate',
+    //         ['linear'],
+    //         ['get', Est25Over],
+    //         blocks[0], legendcolors[0],
+    //         blocks[1], legendcolors[1],
+    //         blocks[2], legendcolors[2],
+    //         blocks[3], legendcolors[3],
+    //         blocks[4], legendcolors[4]
+    //     ]);
+    // } else {
+    //     map.setPaintProperty('stateData-layer', 'fill-color', [
+    //         'interpolate',
+    //         ['linear'],
+    //         ['get', selectedColumn],
+    //         blocks[0], legendcolors[0],
+    //         blocks[1], legendcolors[1],
+    //         blocks[2], legendcolors[2],
+    //         blocks[3], legendcolors[3],
+    //         blocks[4], legendcolors[4]
+    //     ]);
+    // }
+
+
 
     let test = "9_12NoDip" //testing this to see if replacing .columnname with this works, tested and it does not?
     // let BachDeg = " percent estimated of people 25 and over who have a bachlor's degree"

@@ -1,27 +1,16 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <title>Education and Politics Interactive Map</title>
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
     <link rel="icon" type="image/jpg" href="/images/Favicon.jpg">
-    <script src="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
     <link rel="stylesheet" href="css/summary_map.css">
-    <style>
-      #map {
-        position: absolute;
-        top: 50px;
-        bottom: 0;
-        width: 100%;
-      }
-    </style>
 </head>
 
 <body>
-    
-
     <div id="map"></div>
 
     <!-- Welcome panel with additional information -->
@@ -38,18 +27,18 @@
 
     <!-- ADDED SECTION BELOW -->
     <div class="topnav" id="myTopnav">
+      <!-- Links to other sections -->
+      <a href="intro.html">Introduction</a>
       <!-- Active link pointing to the index.html page -->
       <a class="active" href="summary_map.html">Map</a>
 
-      <!-- Links to other sections -->
-      <a href="intro.html">Introduction</a>
       <a href="conclusion.html">Conclusion</a>
 
-      <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links on smaller screens -->
-      <a href="javascript:void(0);" class="icon" onclick="responsive_control()">
-          <i class="fa fa-bars"></i>
-      </a>
     </div>
+    <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links on smaller screens -->
+    <a href="javascript:void(0);" class="icon" onclick="responsive_control()">
+        <i class="fa fa-bars"></i>
+    </a>
 
     <div class="tab">
       <!-- <button class="tablinks" onclick="openCity(event, 'test')">test</button>
@@ -99,8 +88,12 @@
             style="width: 100%"
           />
         </div>
+        <div>
+          <h2>President: <label id="president">Barack Obama</label></h2>
+          <h2>Political Party: <label id="polparty">Democrat</label></h2>  
+        </div>
   
-        <div class="session">
+        <!-- <div class="session">
           <h2>Bachelor's Degree Rate</h2>
           <div class="row colors"></div>
           <div class="row labels">
@@ -111,7 +104,7 @@
             <div class="label">80%</div>
             <div class="label">100%</div>
           </div>
-        </div>
+        </div> -->
     </div>
 
 

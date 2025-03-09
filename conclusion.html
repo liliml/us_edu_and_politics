@@ -1,80 +1,27 @@
 <!DOCTYPE html>
 <html lang="en-US">
  <head>
-    <style>
-        body {
-            margin: 0;
-            padding: 0px;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        }
-        h1 {
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-
-        h2 {
-            font-size: 14px;
-            margin-bottom: 5px;
-        }
-
-        a {
-            text-decoration: none;
-            color: #2dc4b2;
-        }
-
-        .topnav {
-            background-color: rgb(128, 123, 123);
-            overflow: hidden;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            position: fixed;
-            z-index: 1000;
-            width: 100%;
-            padding: 0;
-            border-radius: 10px 10px 10px 10px;
-        }
-
-        .topnav a {
-            color: black;
-            padding: 1%;
-            display: block;
-        }
-
-        .topnav a:hover {
-            background-color: rgb(196, 193, 193);
-            color: black
-        }
-
-        .topnav a.active {
-            background-color: rgb(36, 35, 36);
-            color: rgb(219, 219, 219)
-        }
-
-        .topnav .icon {
-            display: none;
-            font-size: 20px;
-            padding: 14px;
-            cursor: pointer;
-        }
-    </style>
-        
+    <meta charset="utf-8">
+    <title>Education and Politics Interactive Map</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/jpg" href="/images/Favicon.jpg">
+    <link rel="stylesheet" href="css/conclusion.css">
  </head>
  <body>
         <!-- Navigation bar -->
         <div class="topnav" id="myTopnav">
             <!-- Links to different sections -->
-            <a href="summary_map.html">Map</a>
             <a href="intro.html">Introduction</a>    
+            <a href="summary_map.html">Map</a>
 
             <!-- Active link pointing to the section1.html page -->
             <a class="active" href="conclusion.html">Conclusion</a>
     
             <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links on smaller screens -->
-            <a href="javascript:void(0);" class="icon">
-                <i class="fa fa-bars"></i>
-            </a>
         </div>
+        <a href="javascript:void(0);" class="icon">
+            <i class="fa fa-bars"></i>
+        </a>
     <main id="container">
         <div id="side-panel">
         </div>
