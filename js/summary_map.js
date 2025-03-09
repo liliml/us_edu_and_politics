@@ -82,15 +82,15 @@ async function geojsonFetch(year) {
 
 
     //********TODO, ASK ABOUT LINES BELOW!!!! CURRENTLY BREAKS THE TIME SLIDER AS IN YEARS DON'T CHANGE AND DOES NOT CHANGE THE NAME OF THE PRESIDENT OR PARTY??
-    // document.getElementById('president').innerHTML = stateData.features.properties.President; 
+    document.getElementById('president').innerHTML = stateData.features[0].properties.President; 
     // // source: https://stackoverflow.com/questions/52097840/how-to-overwrite-text-in-p-tag-using-javascript
-    // document.getElementById('polparty').innerText = stateData.features.properties.Pol_Party;
+    document.getElementById('polparty').innerHTML = stateData.features[0].properties.Pol_Party;
     // const varpolparty = document.getElementById('polparty');
     // if (stateData.features[0].properties.Pol_Party == "Blue") {        
     //     // varpolparty.innerHTML = "<b>${state[0].properties.Est25Over}<br></b><br><br>";
-    //     const state = map.queryRenderedFeatures(point, {
-    //         layers: ['stateData-layer']
-    //     });
+    //     // const state = map.queryRenderedFeatures(point, {
+    //     //     layers: ['stateData-layer']
+    //     // });
     //     document.getElementById('polparty').innerHTML = state.length ?
     //         `<p><strong><em>${state[0].properties.Pol_Party}</strong> estimated people 25 and over</em></p>` :
     //         `<p>no political party</p>`;
