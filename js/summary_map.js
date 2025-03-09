@@ -97,36 +97,36 @@ async function geojsonFetch(year) {
     // }
 
     //ORGINAL
-    const blocks = [
-        11,
-        21,
-        31,
-        41,
-        51
-    ];
+    // const blocks = [
+    //     11,
+    //     21,
+    //     31,
+    //     41,
+    //     51
+    // ];
 
-    // let blocks = [];
-    // if (selectedColumn == "Summary") {
+    let blocks = [];
+    if (selectedColumn == "Est25Over") {
        
     
-    //     //legend section
-    //     blocks = [
-    //         1000001,
-    //         2000001,
-    //         3000001,
-    //         4000001,
-    //         5000001
-    //     ];
-    // } else {
-    //     //legend section
-    //     blocks = [
-    //         11,
-    //         21,
-    //         31,
-    //         41,
-    //         51
-    //     ];
-    // }
+        //legend section
+        blocks = [
+            1000001,
+            2000001,
+            3000001,
+            4000001,
+            5000001
+        ];
+    } else {
+        //legend section
+        blocks = [
+            11,
+            21,
+            31,
+            41,
+            51
+        ];
+    }
 
     //Still not working changing colors
     let legendcolors = [
@@ -179,7 +179,7 @@ async function geojsonFetch(year) {
         //         }
         //     });
         // });
-        if (selectedColumn == "Summary") {
+        if (selectedColumn == "Est25Over") {
             map.on('load', function loadingData() {
                 map.addSource('stateData', {
                     type: 'geojson',
@@ -248,9 +248,9 @@ async function geojsonFetch(year) {
     
     ///ORGINAL DON'T TOUCH!!!
     let layers = [];
-    if (selectedColumn == "Summary") {
+    if (selectedColumn == "Est25Over") {
        
-    
+        console.log("test")
         //legend section
         layers = [
             '0-1,000,000',
