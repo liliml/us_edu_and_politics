@@ -111,6 +111,7 @@ async function geojsonFetch(year) {
     
         //legend section
         blocks = [
+            1,
             1000001,
             2000001,
             3000001,
@@ -120,6 +121,7 @@ async function geojsonFetch(year) {
     } else {
         //legend section
         blocks = [
+            1,
             11,
             21,
             31,
