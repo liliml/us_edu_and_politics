@@ -28,10 +28,13 @@ document.getElementById('close-welcome').addEventListener('click', function () {
     document.getElementById('welcome-panel').style.display = 'none';
 });
 
+
 //lynnie
 const years = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2021, 2022, 2023];
 let currentYear = 2010; 
 //
+
+
 
 const map = new mapboxgl.Map({
         container: 'map', // container ID
@@ -41,6 +44,10 @@ const map = new mapboxgl.Map({
     }
 );
 
+//********TODO, ASK ABOUT LINES BELOW!!!! CURRENTLY BREAKS THE TIME SLIDER AS IN YEARS DON'T CHANGE AND DOES NOT CHANGE THE NAME OF THE PRESIDENT OR PARTY??
+// document.getElementById('president').innerHTML = stateData.features.properties.President; 
+// // source: https://stackoverflow.com/questions/52097840/how-to-overwrite-text-in-p-tag-using-javascript
+// document.getElementById('polparty').innerText = stateData.features.properties.Pol_Party;
 
 var slider = document.getElementById("yearSlider");
 var selectedYear = document.getElementById("yearLabel");
