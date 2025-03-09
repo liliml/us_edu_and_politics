@@ -79,12 +79,41 @@ table {
   width: 100%;
   text-align: left;
   border-collapse: collapse;
+  /* border: 1px solid #ddd; */
 }
 
 #statsTable th, #statsTable td {
   padding: 10px;
   text-align: left;
-  border-bottom: 1px solid #050505;
+  /* border-bottom: 1px solid #050505; */
+  /* border-left: 1px solid #050505; */
+  border: 1px solid #000000;
+}
+
+.tableheader {
+  background-color: rgb(222, 222, 222);
+  /* border: #000000;
+  border-radius: 2px; */
+  text-decoration: underline;
+}
+
+.conclusion {
+  margin-bottom: 1vh;
+  font-size: 25px;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.sum_stats {
+  margin-top: 3vh;
+  margin-bottom: 1vh;
+  font-size: 25px;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+#yearSlider {
+  margin-bottom: 2vh;
 }
 
   /* When the screen is less than 800 pixels wide */

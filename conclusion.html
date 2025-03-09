@@ -28,11 +28,25 @@
         
     <main id="container">
         <section id="conclusion-text">
-            <h2>Conclusion</h2>
+            <h2 class="conclusion">Conclusion</h2>
             <p class="indented">
-                We were </p>
+                Over the years, there has been a significant shift in education levels across the United States. Data from 2010 to 2023 reveals a consistent increase in higher education attainment, 
+                with Associate’s, Bachelor’s, and Master’s degrees showing an upward trend. Meanwhile, lower education levels saw a steady decline, with fewer individuals lacking a high school diploma 
+                or having only some college education without a degree. These trends suggest that access to education has improved, and more people are pursuing higher degrees, possibly 
+                influenced by economic demands and evolving job market requirements. </p>
+            <p class="indented">
+                Political shifts during this period also present an interesting pattern. From 2010 to 2016, and again from 2021 onward, the country was under Democratic leadership, 
+                while the years 2017 to 2020 were marked by Republican leadership. Despite these shifts, the overall trend of increasing education levels remained consistent, except it did 
+                slow down a little. This suggests that long-term educational growth may be influenced more by societal and economic factors rather than by short-term political changes. 
+                However, policies regarding education funding, student loans, and workforce development could have played a role in shaping these trends. As education levels continue to rise, 
+                it will be important to examine how these changes impact socioeconomic mobility, workforce qualifications, and political engagement in the future. </p>
+            <p class="indented">
+                A table of summary statistics with mimimum, maximum, and averages of educational attainment can be found below with a slider showing the data for each year from 2010 to 2023.</p>
+
+
         </section>
         <div class="session">
+            <h2 class="sum_stats">Summary Statistics</h2>
             <h2>Year: <label id="yearLabel">2010</label></h2>
             <input
               id="yearSlider"
@@ -43,14 +57,14 @@
               value="2010"
               style="width: 100%"
             />
-            <h2>Summary Statistics</h2>
+            
             <table id="statsTable">
                 <thead>
                     <tr>
-                        <th style="text-decoration: underline;">Education Level</th>
-                        <th style="text-decoration: underline;">Minimum</th>
-                        <th style="text-decoration: underline;">Maximum</th>
-                        <th style="text-decoration: underline;">Average</th>
+                        <th class="tableheader">Education Level</th>
+                        <th class="tableheader">Minimum</th>
+                        <th class="tableheader">Maximum</th>
+                        <th class="tableheader">Average</th>
                     </tr>
                 </thead>
                 <tbody>

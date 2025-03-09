@@ -75,6 +75,13 @@ p {
   text-indent: 20px; /* Adjust the value as needed */
 }
 
+.intro {
+  margin-bottom: 1vh;
+  font-size: 25px;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
 
   /* When the screen is less than 800 pixels wide */
 /* @media screen and (max-width: 800px) { */
