@@ -11,11 +11,11 @@ This project is about US political parties and their effect over the years on th
 ## **Application URL:** http://liliml.github.io/us_edu_and_politics/index.html
 
 ## **Project Screenshots:** 
-![](image-1.png)
+![](/image/image-1.png)
 
 Education levels by state during 2010, a democratic year, which is why the color scheme is blue, and gives a little extra information about Washington in the top right.
 
-![](image.png)
+![](/image/image.png)
 
 Education acquisition levels by state under Donald Trump’s first presidency in 2017. Since it was a republican year, the color scheme is red, and there is a pop-up on the right with more information about Washington. The legend on the lower left also shows the population of the state being hovered over, in this case Washington, while the info on the right shows a summary of all the tabs for the selected state.
 
@@ -26,7 +26,7 @@ Census data on Educational attainment https://data.census.gov/table?q=educationa
 
 ## **Favicon:**
 Our favicon is designed to represent US educational attainment statistics and politics as represented by the bar graph, the flag background and coloring, and the graduation cap and tassel.  
-![](image-2.png)
+![](/image/image-2.png)
 
 ## **Applied Libraries:** 
 We did not use an applied libraries such as mapbox gl js or and for web services we used Mapbox for our basemap and github.
