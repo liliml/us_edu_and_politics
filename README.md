@@ -8,7 +8,8 @@ The target audience for our project is two groups. One of the audiences is the g
 ## **Project Description:**
 This project is about US political parties and their effect over the years on the education acquisition rate of various ranges, including those lower than 9th grade, those who pass high school, and different college degrees. The project includes a few choropleth maps with layers corresponding to less than 9th grade, no high school, high school, college no degree, associate's, bachelor's, and master's or higher. This data is also an estimation from the US Census Bureau for individuals over 25. We chose to use estimations since the actual data for this age group wasn’t consistent or sufficient. Each of these pages or “layers” can be switched using a navigation bar at the top of the screen. A second navigation bar above the layer navigation bar can be used to navigate between an introduction with additional information about the project, navigate to and from the map, and view a conclusion with summary statistics for each year of the data. On the map page, a slider can be used that ranges from 2010 to 2023, exempting 2020 due to the pandemic, to display data for that year. The map was also colored according to the political party of the president for the selected year (democrat or republican). The key on the map in the lower left of the screen shows educational attainment levels per state for the “layer” or page selected, which is reflected on the choropleth map of the United States. 
 
-## **Application URL:** http://liliml.github.io/us_edu_and_politics/index.html
+## **Application URL:** 
+http://liliml.github.io/us_edu_and_politics/index.html
 
 ## **Project Screenshots:** 
 ![](/image/image-1.png)
@@ -31,7 +32,8 @@ Our favicon is designed to represent US educational attainment statistics and po
 ## **Applied Libraries:** 
 We did not use an applied libraries such as mapbox gl js or and for web services we used Mapbox for our basemap and github.
 
-## **Mapbox Basemap Style Link:** https://api.mapbox.com/styles/v1/millzm/cm80orv0g006p01sjhiyxdi37.html?title=copy&access_token=pk.eyJ1IjoibWlsbHptIiwiYSI6ImNtN2U3bDFvcDA1eG4yeW44MXgzY3VjM28ifQ.7u7kF2MNuacxZKJ7uFqjTA&zoomwheel=true&fresh=true#11/40.73/-74 
+## **Mapbox Basemap Style Link:** 
+https://api.mapbox.com/styles/v1/millzm/cm80orv0g006p01sjhiyxdi37.html?title=copy&access_token=pk.eyJ1IjoibWlsbHptIiwiYSI6ImNtN2U3bDFvcDA1eG4yeW44MXgzY3VjM28ifQ.7u7kF2MNuacxZKJ7uFqjTA&zoomwheel=true&fresh=true#11/40.73/-74 
 
 ## Acknowledgments: 
 One of our data sources is the US Census Bureau, which gave us data for the years 2010-2023, except for 2020. We also got data from IndexMundi, which is a data aggregation site that produces charts, statistics, and maps. In addition, we got inspiration from projects like Kyle Walker, who made a dot density map of the US by county about education levels. We also got inspiration from a public project that showed education attainment from 2010-2014.
