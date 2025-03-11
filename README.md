@@ -23,7 +23,15 @@ Education acquisition levels by state under Donald Trump’s first presidency in
 ## **Data Source:** 
 Census data on Educational attainment https://data.census.gov/table?q=educational%20attainment%20by%20state 
 
-## **Main functions:** TODO, WAIT FOR GARRETT
+## **Main functions:** 
+**geojsonFetch(year):**
+This function loads the base map with the correct geojson file based on the year selected. Another functionality is changing the map color based on which political party is in power as well as updating the map based on which button and slider the users interact with. Additionally, controls the mouse over behavior that displays the data of the highlighted state. Lastly, the function creates the legend displayed on the map based on the selected color scheme and the buckets.
+
+**opencity(evt, columnName):**
+Updates the selected column to display on the map. Feeds the main function geojsonFetch with which dataset to display. Maintains the state of the button.
+
+**responsive_control():**
+Controls the responsiveness of the navigation bar. Resets the responsive class if not the main page. This function is also used by conclusion.html and intro.html files.
 
 ## **Favicon:**
 Our favicon is designed to represent US educational attainment statistics and politics as represented by the bar graph, the flag background and coloring, and the graduation cap and tassel.  
@@ -43,8 +51,11 @@ One of our data sources is the US Census Bureau, which gave us data for the year
 - https://www.indexmundi.com/facts/united-states/quick-facts/all-states/percent-of-people-25-years-and-over-with-bachelors-degree-or-higher#map 
 
 ## **AI Usage:** TODO, PUT PROMPTS HERE, GARRATT IF HAVE ANY PROMPTS PUT THEM HERE
+We used ChatGPT and github copilot for the following:
 - Intro prompt (chat gpt): "I have a project. I am going to give you a proposal, and I need you to make an introduction which incorporates what it says and is 3.5 paragraphs long."
 - FaviCon Prompt (ChatGPT): "Make a favicon related to Educational attainment in US"
+- @workspace /fix: Fixed the issue where the map wasn’t updating with the user input from the slider and the buttons
+- "The buttons aren't changing on click": Fixed the same issue where the map wasn’t being updated but the correct data was being selected due to changes in the code
 
 ## Sources Referenced: 
 - For welcome panel: [Geog 328 github project template 2](https://github.com/jakobzhao/geog328/blob/main/project/template2/index.html)
@@ -55,6 +66,8 @@ One of our data sources is the US Census Bureau, which gave us data for the year
 - Tutorials referenced as temples: 
 	- https://docs.mapbox.com/help/tutorials/show-changes-over-time/?step=7
     - https://docs.mapbox.com/help/tutorials/building-a-store-locator/?step=8
+    - https://www.w3schools.com/howto/howto_js_rangeslider.asp
+    - Starter template: https://github.com/jakobzhao/geog328/tree/main/labs/lab04
 
 ## Project Inspiration: 
 - Percentage of Population Aged 25 Years and Over With a Bachelor’s Degree or Higher: 2015-2019: https://www.census.gov/library/visualizations/interactive/acs-percentage-bachelors-degree-2015-2019.html
