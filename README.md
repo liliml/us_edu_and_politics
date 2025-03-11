@@ -50,7 +50,7 @@ One of our data sources is the US Census Bureau, which gave us data for the year
 - https://personal.tcu.edu/kylewalker/maps/education/colorsafe/#8.76/37.5829/-122.3656 
 - https://www.indexmundi.com/facts/united-states/quick-facts/all-states/percent-of-people-25-years-and-over-with-bachelors-degree-or-higher#map 
 
-## **AI Usage:** TODO, PUT PROMPTS HERE, GARRATT IF HAVE ANY PROMPTS PUT THEM HERE
+## **AI Usage:**
 We used ChatGPT and github copilot for the following:
 - Intro prompt (chat gpt): "I have a project. I am going to give you a proposal, and I need you to make an introduction which incorporates what it says and is 3.5 paragraphs long."
 - FaviCon Prompt (ChatGPT): "Make a favicon related to Educational attainment in US"
