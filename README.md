@@ -52,7 +52,6 @@ One of our data sources is the US Census Bureau, which gave us data for the year
 
 ## **AI Usage:**
 We used ChatGPT and github copilot for the following:
-- Intro prompt (chat gpt): "I have a project. I am going to give you a proposal, and I need you to make an introduction which incorporates what it says and is 3.5 paragraphs long."
 - FaviCon Prompt (ChatGPT): "Make a favicon related to Educational attainment in US"
 - @workspace /fix: Fixed the issue where the map wasn’t updating with the user input from the slider and the buttons
 - "The buttons aren't changing on click": Fixed the same issue where the map wasn’t being updated but the correct data was being selected due to changes in the code

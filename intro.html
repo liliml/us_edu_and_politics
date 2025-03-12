@@ -26,35 +26,33 @@
         <section id="intro-text">
             <h2 class="intro">Introduction</h2>
             <p class="indented">
-                Education is a fundamental pillar of society, shaping economic opportunities and social mobility across generations. 
-                In the United States, education level varies significantly depending on the state and is influenced by numerous factors, 
-                including political leadership and policy changes over time. Our project seeks to explore the relationship between U.S. political 
-                parties and various education levels like lower than 9th grade, high school diploma, and different college degrees. 
-                By visualizing this data through an interactive map, we aim to provide insight into how different administrations may have 
-                impacted educational outcomes at various levels.</p>
+                This project is about US political parties and their effect over the years on the education acquisition rate of various ranges, 
+                including those lower than 9th grade, those who pass high school, and different college degrees. 
+                The project includes a few choropleth maps with layers corresponding to less than 9th grade, no high school, high school, 
+                college no degree, associate's, bachelor's, and master's or higher. These layers can be switched between using a navigation bar at the top of the screen. 
+                This data is also an estimation from the US Census Bureau for individuals over 25. We chose to use estimations since 
+                the actual data for this age group wasn't consistent or sufficient. 
+            </p>
 
             <p class="indented">
-                Our project is an interactive map, with a year slider and multiple tabs for each education level. 
-                Users will be able to toggle between layers corresponding to less than 9th grade, no high school, high school, college no degree, 
-                associate's, bachelor's, and master's or higher. The year slider will also display the president's political party. 
-                The color scheme will reflect the political landscape—shades of blue for Democratic administrations and shades of red for Republican 
-                administrations. The data for our project will primarily be sourced from the U.S. Census and the National Center for 
-                Education Statistics, which we will process into geoJSON and JSON formats using QGIS, Mapshaper, and Excel.</p>
+                A second navigation bar above the layer navigation bar can be used to navigate between an introduction with additional information about the project, 
+                navigate to and from the map, and view a conclusion with summary statistics for each year of the data. On the map page, 
+                a slider can be used that ranges from 2010 to 2023, exempting 2020 due to the pandemic, to display data for that year, 
+                as well as display the president and their political party for the selected year.  
+            </p>
 
             <p class="indented">
-                The target audience for our project includes the general public, educators, and policymakers. 
-                For the public, the interactive map will serve as an educational tool to foster awareness about the strengths 
-                and weaknesses of the U.S. education system. Educators, particularly those in training, can use the map to analyze 
-                patterns of educational attainment and identify regions in need of policy intervention or additional support. 
-                Policymakers and researchers may also find value in this project, as it provides a clear visualization of historical 
-                educational trends in relation to political leadership.</p>
+                The map also is colored according to the political party of the president for the selected year (democrat or republican). 
+                The legend on the map in the lower left of the screen shows educational attainment levels per state for the “layer” 
+                or page selected, which is reflected on the choropleth map of the United States.
+            </p>
             
             <p class="indented">
-                Inspired by projects such as Kyle Walker's dot-density map of U.S. educational attainment and the U.S. Census Bureau's 
-                interactive educational data visualizations, our work will build upon existing methodologies while incorporating a 
-                time-series component. Utilizing Mapbox, we will implement features that allow users to observe changes in 
-                educational attainment over time. Our project not only seeks to highlight past trends but also aims to spark 
-                discussions about the role of government policies in shaping the nation's educational landscape.</p>
+                The purpose of the application is to help teachers in training gain a better understanding of the United States' education system, 
+                its flaws, and where the education needs to be improved, as well as where they could potentially provide help to students in the future. 
+                It shows the prevalence of higher education and how necessary it has become in recent years. 
+                This application also may be used by education policy makers to help them gain background information and make informed decisions.
+            </p>
         </section> 
     </main>
     <script src="js/intro.js"></script>
