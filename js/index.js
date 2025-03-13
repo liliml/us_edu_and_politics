@@ -40,7 +40,7 @@ const map = new mapboxgl.Map({
         container: 'map', // container ID
         style: 'mapbox://styles/millzm/cm80orv0g006p01sjhiyxdi37', 
         zoom: 3, // starting zoom
-        center: [-100, 10] // starting center
+        center: [-100, 30] // starting center
     }
 );
 
