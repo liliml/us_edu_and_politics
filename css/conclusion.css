@@ -96,7 +96,7 @@ border: 1px solid #000000;
 }
 
 .tableheader {
-background-color: rgb(222, 222, 222);
+background-color: rgb(132, 129, 129);
 /* border: #000000;
 border-radius: 2px; */
 text-decoration: underline;
@@ -119,6 +119,22 @@ font-weight: 600;
 
 #yearSlider {
 margin-bottom: 2vh;
+}
+
+body {
+  background-color: rgba(216,207,127,255);
+}
+
+.notecard {
+  position: relative;
+  background: black;
+  color: white; 
+  border-radius: 3px;
+  padding: 20px;
+  box-shadow: 2px 2px 3px rgba(128, 128, 128, 0.8); 
+  font-family: Arial, sans-serif;
+  margin: 10px 0;
+  max-width: 100%; 
 }
 
 /* When the screen is less than 800 pixels wide */
