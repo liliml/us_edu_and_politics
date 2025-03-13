@@ -3,11 +3,6 @@ h2, h3 {
   font-size: 18px;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  background-color: #aaaaaa;
-}
-
 h3 {
   font-size: 16px;
 }
@@ -129,10 +124,9 @@ body {
   position: relative;
   background: black;
   color: white; 
-  border-radius: 3px;
+  border-radius: 12px;
   padding: 20px;
   box-shadow: 2px 2px 3px rgba(128, 128, 128, 0.8); 
-  font-family: Arial, sans-serif;
   margin: 10px 0;
   max-width: 100%; 
 }
