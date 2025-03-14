@@ -7,52 +7,34 @@ icon.addEventListener('click', responsive_control);
 
 // Function to control the responsiveness of the navigation bar
 function responsive_control() {
-  // Get the element with the id "myTopnav"
-  let x = document.getElementById("myTopnav");
-
-  // Check if the class name of the element is "topnav"
-  if (x.className === "topnav") {
-    // If it is, add the "responsive" class to the element
-    x.className += " responsive";
-  } else {
-    // If it's not, remove the "responsive" class from the element
-    x.className = "topnav";
-  }
+    // Get the element with the id "myTopnav"
+    let x = document.getElementById("myTopnav");
+    // Check if the class name of the element is "topnav"
+    if (x.className === "topnav") {
+        // If it is, add the "responsive" class to the element
+        x.className += " responsive";
+    } else {
+        // If it's not, remove the "responsive" class from the element
+        x.className = "topnav";
+    }
 }
 
-
 mapboxgl.accessToken = 'pk.eyJ1Ijoicm9zZS0xNjgiLCJhIjoiY202aWYxY3lsMDdxdjJpcHJoaHlmZzdiNiJ9.3wUanYJCI6409InuRs9e7A';
-
 // Close the welcome panel when the button is clicked
 document.getElementById('close-welcome').addEventListener('click', function () {
     document.getElementById('welcome-panel').style.display = 'none';
 });
 
-
-//lynnie
-// const years = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2021, 2022, 2023];
-// let currentYear = 2010; 
-//
-
-
-
 const map = new mapboxgl.Map({
-        container: 'map', // container ID
-        style: 'mapbox://styles/millzm/cm80orv0g006p01sjhiyxdi37', 
-        zoom: 3, // starting zoom
-        center: [-100, 50] // starting center
-    }
-);
-
-
-
+    container: 'map', // container ID
+    style: 'mapbox://styles/millzm/cm80orv0g006p01sjhiyxdi37', 
+    zoom: 3, // starting zoom
+    center: [-100, 50] // starting center
+});
 
 var slider = document.getElementById("yearSlider");
 var selectedYear = document.getElementById("yearLabel");
 var selectedColumn = 'HighGrad'; // Default column
-
-
-
 
 // Update the map data based on the slider value
 slider.oninput = function() {
@@ -92,20 +74,8 @@ async function geojsonFetch(year) {
         document.getElementById('president').innerHTML = stateData.features[0].properties.President; 
         // // source: https://stackoverflow.com/questions/52097840/how-to-overwrite-text-in-p-tag-using-javascript
         document.getElementById('polparty').innerHTML = stateData.features[0].properties.Pol_Party;
-    
-        //ORGINAL
-        // const blocks = [
-        //     11,
-        //     21,
-        //     31,
-        //     41,
-        //     51
-        // ];
-    
         let blocks = [];
         if (selectedColumn == "Est25Over") {
-           
-        
             //legend section, added .0 to fix legend precision
             blocks = [
                 1.0,
@@ -126,8 +96,6 @@ async function geojsonFetch(year) {
                 51.0
             ];
         }
-    
-        //Still not working changing colors
         let legendcolors = [
             '#f1eef6',
             '#bdc9e1',
@@ -135,8 +103,6 @@ async function geojsonFetch(year) {
             '#2b8cbe',
             '#045a8d'
         ];
-    
-    
         if (stateData.features[0].properties.Color === 'Red') {
             legendcolors = [
                 '#fee5d9',
@@ -146,45 +112,15 @@ async function geojsonFetch(year) {
                 '#a50f15'
             ];
         }
-    
-    
         if (map.getSource('stateData')) {
             map.getSource('stateData').setData(stateData);
         } else {
-            //ORIGINAL DON'T TOUCH
-            // map.on('load', function loadingData() {
-            //     map.addSource('stateData', {
-            //         type: 'geojson',
-            //         data: stateData
-            //     });
-    
-            //     map.addLayer({
-            //         'id': 'stateData-layer',
-            //         'type': 'fill',
-            //         'source': 'stateData',
-            //         'paint': {
-            //             'fill-color': [
-            //                 'interpolate',
-            //                 ['linear'],
-            //                 ['get', selectedColumn],
-            //                 blocks[0], legendcolors[0],
-            //                 blocks[1], legendcolors[1],
-            //                 blocks[2], legendcolors[2],
-            //                 blocks[3], legendcolors[3],
-            //                 blocks[4], legendcolors[4]
-            //             ],
-            //             'fill-outline-color': '#BBBBBB',
-            //             'fill-opacity': 0.7,
-            //         }
-            //     });
-            // });
             if (selectedColumn == "Est25Over") {
                 map.on('load', function loadingData() {
                     map.addSource('stateData', {
                         type: 'geojson',
                         data: stateData
                     });
-        
                     map.addLayer({
                         'id': 'stateData-layer',
                         'type': 'fill',
@@ -211,7 +147,6 @@ async function geojsonFetch(year) {
                         type: 'geojson',
                         data: stateData
                     });
-        
                     map.addLayer({
                         'id': 'stateData-layer',
                         'type': 'fill',
@@ -234,21 +169,8 @@ async function geojsonFetch(year) {
                 });    
             }
         }
-    
-        //legend section
-        // const layers = [
-        //     '0-10',
-        //     '11-20',
-        //     '21-30',
-        //     '31-40',
-        //     '41-50'
-        // ];
-    
-        
-        ///ORGINAL DON'T TOUCH!!!
         let layers = [];
-        if (selectedColumn == "Est25Over") {
-           
+        if (selectedColumn == "Est25Over") { 
             console.log("test")
             //legend section
             layers = [
@@ -268,42 +190,8 @@ async function geojsonFetch(year) {
                 '41-50'
             ];
         }
-    
-        //BELOW DOES NOT WORK, NEITHER DOES ABOVE
-        // let layers = [
-        //         '0-10',
-        //         '11-20',
-        //         '21-30',
-        //         '31-40',
-        //         '41-50'];
-        // if (selectedColumn == "Summary") {
-        //     //legend section
-        //     layers = [
-        //         '0-1,000,000',
-        //         '1,000,001-2,000,000',
-        //         '2,000,001-3,000,000',
-        //         '3,000,001-4,000,000',
-        //         '4,000,001-5,000,000+'
-        //     ];
-        // } 
-    
-    
-    
-    
-        // const colors = [
-        //     '#FFEDA070',
-        //     '#FED97670',
-        //     '#FEB24C70',
-        //     '#FD8D3C70',
-        //     '#FC4E2A70',
-        //     '#E31A1C70',
-        //     '#BD002670',
-        //     '#80002670'
-        // ];
-        
-    
+
         const legend = document.getElementById('legend');
-        
         if (selectedColumn == "Less9Gra") {        
             legend.innerHTML = "<b>% estimated of people 25 and over who have less then 9th grade education<br></b><br><br>";
         } else if (selectedColumn == "9_12NoDip") {
@@ -322,22 +210,6 @@ async function geojsonFetch(year) {
             legend.innerHTML = "<b>State Population. Hover over a state for additional statistics<br></b><br><br>";
         }
         
-        //ORGINAL IN LINE BELOW!!!
-        //legend.innerHTML = "<b>Population Density<br>(people/sq.mi.)</b><br><br>";  
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-        //ORGINAL DON'T TOUCH!!!
         layers.forEach((layer, i) => {
             const color = legendcolors[i];
             const item = document.createElement('div');
@@ -352,19 +224,6 @@ async function geojsonFetch(year) {
             legend.appendChild(item);
         });
     
-    
-        // map.setPaintProperty('stateData-layer', 'fill-color', [
-        //     'step',
-        //     ['get', selectedColumn],
-        //     blocks[0], legendcolors[0],
-        //     blocks[1], legendcolors[1],
-        //     blocks[2], legendcolors[2],
-        //     blocks[3], legendcolors[3],
-        //     blocks[4], legendcolors[4]
-        // ]);
-    
-    
-        //ORGINAL DON'T TOUCH!!!
         map.setPaintProperty('stateData-layer', 'fill-color', [
             'interpolate',
             ['linear'],
@@ -375,37 +234,7 @@ async function geojsonFetch(year) {
             blocks[3], legendcolors[3],
             blocks[4], legendcolors[4]
         ]);
-    
-        //NOTE: The code below breaks the summary page as it does not give correct color and breaks 
-        // it such that the info for the state shown is not correct and does not show all info for the summary page
-        //********TODO, GET THE CODE BELOW TO WORK, SEE NOTE ABOVE!!!!
-        // if (selectedColumn == "Summary") {
-        //     map.setPaintProperty('stateData-layer', 'fill-color', [
-        //         'interpolate',
-        //         ['linear'],
-        //         ['get', Est25Over],
-        //         blocks[0], legendcolors[0],
-        //         blocks[1], legendcolors[1],
-        //         blocks[2], legendcolors[2],
-        //         blocks[3], legendcolors[3],
-        //         blocks[4], legendcolors[4]
-        //     ]);
-        // } else {
-        //     map.setPaintProperty('stateData-layer', 'fill-color', [
-        //         'interpolate',
-        //         ['linear'],
-        //         ['get', selectedColumn],
-        //         blocks[0], legendcolors[0],
-        //         blocks[1], legendcolors[1],
-        //         blocks[2], legendcolors[2],
-        //         blocks[3], legendcolors[3],
-        //         blocks[4], legendcolors[4]
-        //     ]);
-        // }
-    
-    
-    
-        let test = "9_12NoDip" //testing this to see if replacing .columnname with this works, tested and it does not?
+
         // let BachDeg = " percent estimated of people 25 and over who have a bachlor's degree"
         // let Grad_Prof = " percent estimated of people 25 and over who have professional or graduate degrees"
         if (selectedColumn == "Less9Gra") {        
@@ -509,21 +338,10 @@ async function geojsonFetch(year) {
                     <p><strong><em>${state[0].properties.BachDeg}</strong>% estimated of people 25 and over who have a bachlor's degree</em></p>
                     <p><strong><em>${state[0].properties.Grad_Prof}</strong>% estimated of people 25 and over who have professional or graduate degrees</em></p>
                     ` :
-                    // "name" (index of 1)
-                    // "Est25Over"
-                    // "Less9Gra" 
-                    // "9-12NoDip" (has properties index of 7 due to zero based indexing, doing this due to using - in the name, which is a special character!!!!)
-                    //"HighGrad", 
-                    // "Col_NoDeg"
-                    // "AssocDeg"
-                    // "BachDeg" 
-                    //"Grad_Prof"
                     `<p>Hover over a state!</p>`;
             });
         }
     } 
 }
 
-
-// Initial load
 geojsonFetch(slider.value);

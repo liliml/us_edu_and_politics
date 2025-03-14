@@ -21,24 +21,17 @@ p {
     width: 100%;
 }
 
-
 /* map overlay for top map overlay below */
 .map-overlay-top {
     position: absolute;
-    /* bottom: 0; */
     right: 5px;
-    /* top: 100px; */
     background: rgba(255, 255, 255, 0.8);
     border-style: solid;
     border-width: 1px;
     border-color: rgba(0, 0, 0, 0.2);
     margin-left: 20px;
     font-family: Arial, sans-serif;
-    /* overflow: auto; */
     border-radius: 3px;
-    /* padding-bottom: auto; */
-    /* height: auto; */
-    padding-top: 75px;
 }
 
 /* map overlay elements below */
@@ -57,8 +50,7 @@ p {
 }
 
 #features {
-    top: 0;
-    /* height: 100px; */
+    top: 5%;
     height:fit-content;
     margin-top: 20px;
     width: 250px;
@@ -81,16 +73,15 @@ p {
     margin-right: 5px;
 }
 
-/* lynnie */
 .label {
     width: 20%;
     display: inline-block;
     text-align: center;
-  }
+}
 
 #console {
-position: absolute;
-    top: 60px;
+    position: absolute;
+    top:5%;
     left: 10px;
     width: 260px;
     background-color: white;
@@ -99,14 +90,9 @@ position: absolute;
     border-radius: 5px;
     margin-top: 80px;
 }
-/*  */
-
-/* Garett slider and tabs */
-
 
 .tab {
     overflow: visible;
-    /* border: 1px solid #ccc; */
     background-color: #f1f1f1;
     position: absolute;
     margin-top: 70px;
@@ -141,8 +127,6 @@ position: absolute;
     border: 1px solid #ccc;
     border-top: none;
 }
-/*  */
-
 
 /* css that makes cursor look normal */
 .mapboxgl-canvas-container.mapboxgl-interactive,
@@ -187,55 +171,26 @@ position: absolute;
     border-radius: 4px;
     cursor: pointer;
 }
-
-
-
-/* .row {
-    height: 12px;
-    width: 100%;
-  }
-
-.colors {
-    background: linear-gradient(
-      to right,
-      #2dc4b2,
-      #3bb3c3,
-      #669ec4,
-      #8b88b6,
-      #a2719b,
-      #aa5e79
-    ); */
     
 .topnav {
     background-color: rgb(128, 123, 123);
     overflow: hidden;
     display: flex;
-    /* display:inline-block; */
-    /* justify-content: space-between; */
     justify-content: space-evenly;
-
-
-    /* flex-wrap: wrap;
-    align-items: center; */
     position: fixed;
     width: 100%;
     padding: 0;
     margin: none;
-    /* border-radius: 10px 10px 10px 10px; */
-    z-index: 1;
 }
 
 .topnav a {
     float: left;
-    /* display: block; */
     color: #f2f2f2;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
     font-size: 26px;
-    /* justify-content: space-evenly; */
     width: 50vw;
-    /* display:inline-block; */
 }
 
 .topnav a:hover {
@@ -243,15 +198,11 @@ position: absolute;
     color: black;
     text-decoration: underline;
     font-style: italic;
-    /* width: 15vw; */
-    /* justify-content: space-evenly; */
 }
 
 .topnav a.active {
     background-color: rgb(36, 35, 36);
     color: rgb(219, 219, 219);
-    /* width: 15vw; */
-    /* justify-content: space-evenly; */
 }
 
 .topnav .icon {
@@ -265,43 +216,4 @@ position: absolute;
 .topnav a.icon {
     float: right;
     display: block;
-  }
-
-
-  /* When the screen is less than 800 pixels wide */
-/* @media screen and (max-width: 800px) { */
-    /* Hide all links, except for the selected tab */
-    /* .topnav a:not(.active) {
-      display: none;
-    } */
-  
-    /* Show the icon that should open and close the topnav */
-    /* .topnav a.icon {
-      float: right;
-      display: block;
-    } */
-    
-  /* } */
-  
-  /* When the screen is less than 800 pixels wide, if the user clicks on the icon */
-  /* the "responsive" class attribute will be added to the topnav by the JavaScript code */
-  /* This media query sets the style for the unfolded topnav */
-  /* It makes the topnav look good on small screens (display the links vertically instead of horizontally)  */
-  /* @media screen and (max-width: 800px) {
-    .topnav.responsive {
-      position: relative;
-    }
-  
-    .topnav.responsive a.icon {
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
-  
-    .topnav.responsive a {
-      float: none;
-      display: block;
-      text-align: left;
-    }
-  
-  } */
+}
