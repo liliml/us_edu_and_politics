@@ -19,15 +19,24 @@ function responsive_control() {
     x.className = "topnav";
   }
 }
+
 var slider = document.getElementById("yearSlider");
 var selectedYear = document.getElementById("yearLabel");
-
+// Update the table values based on the slider value
 slider.oninput = function() {
-  selectedYear.innerHTML = this.value;
-  geojsonFetch(this.value);
+  //this.value is the "year", the value that "slider" has in line above
+  if (this.value >= 2020) {
+    //force to go to next year so there is not duplicate 2021s due to 14 slider slots and only 13 datasets
+    //parseInt casts this.value to an int (was a string before). To do this also had to set max to 2022 in the html to avoid it saying 2024
+    selectedYear.innerHTML = parseInt(this.value) + 1;
+    geojsonFetch(parseInt(this.value) + 1);
+  } else {
+    selectedYear.innerHTML = this.value;
+    geojsonFetch(this.value);  
+  }
 }
 
-async function geojsonFetch(year) { 
+async function geojsonFetch(year) {
   let response = await fetch(`assets/${year}_data.geojson`);
   let stateData = await response.json();
   let features = stateData.features;
@@ -44,7 +53,6 @@ function updateTable(features) {
       "bach": [],
       "mast": []
   };
-
   // Loop through each edu level for each year
   features.forEach(feature => {
       let properties = feature.properties;
@@ -75,6 +83,7 @@ function updateTable(features) {
     }
   });
 }
+
 document.addEventListener("DOMContentLoaded", function () {
   geojsonFetch(2010);
 });

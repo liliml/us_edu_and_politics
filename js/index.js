@@ -171,7 +171,6 @@ async function geojsonFetch(year) {
         }
         let layers = [];
         if (selectedColumn == "Est25Over") { 
-            console.log("test")
             //legend section
             layers = [
                 '0-1,000,000',
